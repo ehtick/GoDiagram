@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -71,9 +71,9 @@ namespace Demo.Samples.SpacingZoom {
       // because of the use of the Node.Location Binding conversion functions.
       // The SpacingCommandHandler also assumes the Node.Location is bound to the data property named "loc".
       myDiagram.NodeTemplate =
-        new Node(PanelType.Auto).Bind(  // the Shape will go around the TextBlock
-          new Binding("Location", "Loc", SpacedLocationParse).MakeTwoWay(SpacedLocationStringify)
-        ).Add(
+        new Node(PanelType.Auto) // the Shape will go around the TextBlock
+        .BindTwoWay("Location", "Loc", SpacedLocationParse, SpacedLocationStringify)
+        .Add(
           new Shape {
             Figure = "RoundedRectangle",
             StrokeWidth = 0

@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -71,10 +71,10 @@ namespace Demo.Samples.LogicCircuit {
       // define some common property settings
       void nodeStyle(Node node) {
         node
-          .Bind(new[] {
+          .Bind(
             new Binding("Location", "Loc", Point.Parse, Point.Stringify),
             new Binding("IsShadowed", "IsSelected").OfElement()
-          })
+          )
           .Set(new {
             SelectionAdorned = false,
             ShadowOffset = new Point(0, 4),

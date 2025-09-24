@@ -1,4 +1,4 @@
-/* Copyright 1998-2024 by Northwoods Software Corporation. */
+/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Linq;
@@ -13,7 +13,7 @@ namespace WinFormsDemoApp {
     /// </summary>
     [STAThread]
     static void Main(string[] args) {
-      var openTo = (DemoType.Sample, "OrgChartEditor");  // open to Org Chart Editor by default
+      var openTo = (DemoType.Sample, DemoIndex.Samples.First().Key);
       // read only the first arg, which will direct to a particular sample
       if (args.Length > 0) {
         openTo = ProcessInput(args[0]);

@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -110,9 +110,8 @@ namespace Demo.Samples.SelectablePorts {
           SelectionAdorned = false,
           LocationSpot = Spot.Center,
           LocationElementName = "BODY"
-        }.Bind(
-          new Binding("Location", "Loc", Point.Parse).MakeTwoWay(Point.Stringify)
-        ).Add(
+        }.BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
+        .Add(
           new Panel(PanelType.Auto) {
             Name = "BODY"
           }.Add(
@@ -133,7 +132,7 @@ namespace Demo.Samples.SelectablePorts {
                 new Binding("Text", "Name")
               ),
               new Picture {
-                Source = "https://nwoods.com/go/images/samples/60x90.png",
+                Source = "https://nwoods.com/images/samples/60x90.png",
                 Width = 30,
                 Height = 45,
                 Margin = new Margin(10, 10)

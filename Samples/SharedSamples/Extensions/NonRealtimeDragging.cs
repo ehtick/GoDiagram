@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using Northwoods.Go;
@@ -44,9 +44,7 @@ namespace Demo.Extensions.NonRealtimeDragging {
             Margin = 6, // make some extra space for the shape around the text
             IsMultiline = false, // don't allow newlines in text
             Editable = true // allow in-place editing by user
-          }.Bind(
-            new Binding("Text").MakeTwoWay() // label shows the node data's text
-          )
+          }.BindTwoWay("Text") // label shows the node data's text
         );
 
       _Diagram.Model = new Model {

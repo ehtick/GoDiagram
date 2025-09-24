@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -138,7 +138,7 @@ namespace Demo.Samples.SwimLanes {
         new Node("Auto") {
             DragComputation = stayInGroup // limit dragging of Nodes to stay within the containing Group, defined above
           }
-          .Bind("Location", "Loc", Point.Parse, Point.Stringify)
+          .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
           .Add(
             new Shape("Rectangle") {
               Fill = "white",
@@ -179,7 +179,8 @@ namespace Demo.Samples.SwimLanes {
               IsOngoing = false,  // don't invalidate layout when nodes or links are added or removed
               Direction = 0,
               ColumnSpacing = 10,
-              LayeringOption = LayeredDigraphLayering.LongestPathSource
+              LayeringOption = LayeredDigraphLayering.LongestPathSource,
+              AlignOption = LayeredDigraphAlign.All
             },
             ComputesBoundsAfterDrag = true,  // needed to prevent recomputing Group.placeholder bounds too soon
             ComputesBoundsIncludingLinks = false,  // to reduce occurrences of links going briefly outside the lane
@@ -212,8 +213,8 @@ namespace Demo.Samples.SwimLanes {
             }
           }
           .Set(groupStyle)
-          .Bind("Location", "Loc", Point.Parse, Point.Stringify)
-          .Bind(new Binding("IsSubGraphExpanded", "Expanded").MakeTwoWay())
+          .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
+          .BindTwoWay("IsSubGraphExpanded", "Expanded")
           .Add(
             // the lane header consisting of a Shape and a textblock
             new Panel("Horizontal") {
@@ -223,7 +224,7 @@ namespace Demo.Samples.SwimLanes {
               }
               .Add(
                 new Panel("Horizontal")  // this is hidden when the swimlane is collapsed
-                  .Bind(new Binding("Visible", "IsSubGraphExpanded").OfElement())
+                  .BindElement("Visible", "IsSubGraphExpanded")
                   .Add(
                     new Shape("Diamond") { Width = 8, Height = 8, Fill = "white" }
                       .Bind("Fill", "Color"),
@@ -232,7 +233,7 @@ namespace Demo.Samples.SwimLanes {
                         Editable = true,
                         Margin = new Margin(2, 0, 0, 0)
                       }
-                      .Bind(new Binding("Text").MakeTwoWay())
+                      .BindTwoWay("Text")
                   ),
                 Builder.Make<Panel>("SubGraphExpanderButton").Set(new { Margin = 5 })
               ), // end Horizontal Panel
@@ -240,17 +241,15 @@ namespace Demo.Samples.SwimLanes {
               .Add(
                 new Shape("Rectangle") { Name = "SHAPE", Fill = "white" }  // this is the resized object
                   .Bind("Fill", "Color")
-                  .Bind("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify),
+                  .BindTwoWay("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify),
                 new Placeholder { Padding = 12, Alignment = Spot.TopLeft },
                 new TextBlock {  // this TextBlock is only seen when the swimlane is collapsed
                     Name = "LABEL",
                     Font = new Font("Segoe UI", 13, Northwoods.Go.FontWeight.Bold, FontUnit.Point), Editable = true,
                     Angle = 0, Alignment = Spot.TopLeft, Margin = new Margin(2, 0, 0, 4)
                   }
-                  .Bind(
-                    new Binding("Visible", "IsSubGraphExpanded", (e) => { return !(bool)e; }).OfElement(),
-                    new Binding("Text").MakeTwoWay()
-                  )
+                  .BindTwoWay("Text")
+                  .BindElement("Visible", "IsSubGraphExpanded", (e) => { return !(bool)e; })
               ) // end Auto panel
           ); // end Group
 
@@ -293,7 +292,7 @@ namespace Demo.Samples.SwimLanes {
             Layout = new PoolLayout { Spacing = new Size(0, 0) } // no space between lanes
           }
           .Set(groupStyle)
-          .Bind("Location", "Loc", Point.Parse, Point.Stringify)
+          .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
           .Add(
             new Shape { Fill = "white" }
               .Bind("Fill", "Color"),
@@ -306,7 +305,7 @@ namespace Demo.Samples.SwimLanes {
                       Editable = true,
                       Margin = new Margin(2, 0, 0, 0)
                     }
-                    .Bind(new Binding("Text").MakeTwoWay())
+                    .BindTwoWay("Text")
                   ),
                 new Placeholder { Column = 1 }
               )

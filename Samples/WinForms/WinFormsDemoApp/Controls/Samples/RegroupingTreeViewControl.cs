@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -151,7 +151,7 @@ namespace Demo.Samples.RegroupingTreeView {
                         Font = new Font("Segoe UI", 18, FontWeight.Bold),
                         Stroke = "#9A6600"
                       }
-                      .Bind(new Binding("Text").MakeTwoWay())
+                      .BindTwoWay("Text")
                   ),  // end horizontal Panel
                 new Placeholder { Padding = 5, Alignment = Spot.TopLeft }
               )  // end Vertical panel
@@ -193,7 +193,7 @@ namespace Demo.Samples.RegroupingTreeView {
                       Margin = 5,
                       Font = new Font("Segoe UI", 16, FontWeight.Bold),
                       Stroke = "#006080"
-                    }.Bind(new Binding("Text").MakeTwoWay())
+                    }.BindTwoWay("Text")
                   ),  // end horizontal Panel
                 new Placeholder { Padding = 5, Alignment = Spot.TopLeft }
               )  // end Vertical panel
@@ -215,7 +215,7 @@ namespace Demo.Samples.RegroupingTreeView {
                 Font = new Font("Segoe UI", 13, FontWeight.Bold),
                 Stroke = "#446700"
               }
-              .Bind(new Binding("Text").MakeTwoWay())
+              .BindTwoWay("Text")
           );
 
       var myChangingModel = false;
@@ -299,7 +299,7 @@ namespace Demo.Samples.RegroupingTreeView {
              .Bind(new Binding("Background", "IsSelected", (s, _) => (bool)s ? "lightblue" : "white").OfElement())
              .Add(
                 new TextBlock { Editable = true }
-                  .Bind(new Binding("Text").MakeTwoWay())
+                  .BindTwoWay("Text")
              ) // end Horizontal Panel
          ); // end Node
 

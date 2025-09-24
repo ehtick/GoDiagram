@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -64,11 +64,9 @@ namespace Demo.Samples.MindMap {
                  MinSize = new Size(30, 15),
                  Editable = true
                }
-               .Bind(
-                 new Binding("Text").MakeTwoWay(),
-                 new Binding("Scale").MakeTwoWay(),
-                 new Binding("Font").MakeTwoWay()
-               ),
+               .BindTwoWay("Text")
+               .BindTwoWay("Scale")
+               .BindTwoWay("Font"),
              new Shape("LineH") {
                  Stretch = Stretch.Horizontal,
                  StrokeWidth = 3, Height = 3,

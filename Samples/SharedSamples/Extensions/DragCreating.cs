@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using Northwoods.Go;
@@ -34,8 +34,8 @@ namespace Demo.Extensions.DragCreating {
           MinSize = new Size(60, 20),
           Resizable = true
         }.Bind(
-          new Binding("DesiredSize", "Size", Northwoods.Go.Size.Parse).MakeTwoWay(Northwoods.Go.Size.Stringify),
-          new Binding("Position", "Pos", Point.Parse).MakeTwoWay(Point.Stringify),
+          new Binding("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify),
+          new Binding("Position", "Pos", Point.Parse, Point.Stringify),
           new Binding("LayerName", "IsSelected", (s, t) => { return ((bool)s) ? "Foreground" : ""; }).OfElement())
         .Add(
           new Shape {

@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using System.Linq;
@@ -108,15 +108,13 @@ namespace Demo.Samples.SystemDynamics {
 
     private void BuildTemplates() {
       // helpers for the templates
-      var nodeStyle = new {
-        Type = PanelLayoutSpot.Instance,
-        LayerName = "Background",
-        LocationElementName = "SHAPE",
-        SelectionElementName = "SHAPE",
-        LocationSpot = Spot.Center
-      };
-      Binding locBind() {
-        return new Binding("Location", "Loc", Point.Parse, Point.Stringify);
+      void nodeStyle(Node node) {
+        node.Type = PanelLayoutSpot.Instance;
+        node.LayerName = "Background";
+        node.LocationElementName = "SHAPE";
+        node.SelectionElementName = "SHAPE";
+        node.LocationSpot = Spot.Center;
+        node.BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify);
       }
 
       var shapeStyle = new {
@@ -133,15 +131,14 @@ namespace Demo.Samples.SystemDynamics {
         Margin = 2,
         Editable = true
       };
-      Binding labelBind() {
-        return new Binding("Text", "Label").MakeTwoWay();
+      void labelBind(TextBlock tb) {
+        tb.BindTwoWay("Text", "Label");
       }
 
       // node templates
       _Diagram.NodeTemplateMap.Add("stock",
         new Node()
-          .Set(nodeStyle)
-          .Bind(locBind())
+          .Apply(nodeStyle)
           .Add(
             new Shape { DesiredSize = new Size(50, 30) }
               .Set(shapeStyle),
@@ -150,15 +147,14 @@ namespace Demo.Samples.SystemDynamics {
             }
               .Set(textStyle)
               .Set(new { _IsNodeLabel = true })  // declare draggable by NodeLabelDraggingTool
-              .Bind(labelBind())
-              .Bind("Alignment", "LabelOffset", Spot.Parse, Spot.Stringify)
+              .Apply(labelBind)
+              .BindTwoWay("Alignment", "LabelOffset", Spot.Parse, Spot.Stringify)
           )
       );
 
       _Diagram.NodeTemplateMap.Add("cloud",
         new Node()
-          .Set(nodeStyle)
-          .Bind(locBind())
+          .Apply(nodeStyle)
           .Add(
             new Shape("Cloud") { DesiredSize = new Size(35, 35) }
               .Set(shapeStyle)
@@ -170,9 +166,8 @@ namespace Demo.Samples.SystemDynamics {
             Movable = false,
             AlignmentFocus = Spot.None
           }
-          .Set(nodeStyle)
+          .Apply(nodeStyle)
           .Set(new { LayerName = "Foreground" })
-          .Bind(locBind())
           .Add(
             new Shape("Ellipse") { DesiredSize = new Size(20, 20) }
               .Set(shapeStyle),
@@ -181,21 +176,20 @@ namespace Demo.Samples.SystemDynamics {
             }
               .Set(textStyle)
               .Set(new { _IsNodeLabel = true })  // declare draggable by NodeLabelDraggingTool
-              .Bind(labelBind())
-              .Bind("Alignment", "LabelOffset", Spot.Parse, Spot.Stringify)
+              .Apply(labelBind)
+              .BindTwoWay("Alignment", "LabelOffset", Spot.Parse, Spot.Stringify)
           )
 
       );
 
       _Diagram.NodeTemplateMap.Add("variable",
         new Node()
-         .Set(nodeStyle)
+         .Apply(nodeStyle)
          .Set(new { Type = PanelLayoutAuto.Instance })
-         .Bind(locBind())
          .Add(
             new TextBlock { IsMultiline = false }
               .Set(textStyle)
-              .Bind(labelBind()),
+              .Apply(labelBind),
             new Shape { IsPanelMain = true }
               .Set(shapeStyle)
               // the port is in front and transparent, even though it goes around the text

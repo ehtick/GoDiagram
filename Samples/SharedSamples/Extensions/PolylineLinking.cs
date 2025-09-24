@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using Northwoods.Go;
@@ -39,7 +39,7 @@ namespace Demo.Extensions.PolylineLinking {
       _Diagram.NodeTemplate =
         new Node(PanelType.Spot) {
           LocationSpot = Spot.Center
-        }.Bind(new Binding("Location", "Loc", Point.Parse).MakeTwoWay(Point.Stringify))
+        }.BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
         .Add(
           new Shape {
             Width = 100,
@@ -74,7 +74,7 @@ namespace Demo.Extensions.PolylineLinking {
           Resegmentable = true,
           //Routing = LinkRouting.Orthogonal, // optional, but need to keep LinkingTool.TemporaryLink in sync above
           Adjusting = LinkAdjusting.Stretch
-        }.Bind(new Binding("Points").MakeTwoWay())
+        }.BindTwoWay("Points")
         .Add(
           new Shape {
             StrokeWidth = 1.5

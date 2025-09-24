@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -78,9 +78,7 @@ namespace Demo.Samples.AddRemoveColumns {
                       Editable = true,
                       Margin = new Margin(2, 2, 0, 2),
                       Wrap = Wrap.None
-                    }.Bind(
-                      new Binding("Text").MakeTwoWay()
-                    )
+                    }.BindTwoWay("Text")
                   )
               }.Bind(
                 // which in turn consists of a collection of cell objects,

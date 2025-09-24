@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using Northwoods.Go;
@@ -64,11 +64,10 @@ namespace Demo.Extensions.SwimLane {
       // replace the default Link template in the LinkTemplateMap
       _Diagram.LinkTemplate =
         new Link { // the whole link panel
-            Routing = LinkRouting.AvoidsNodes,Corner = 10
+            Curve = LinkCurve.Bezier, FromEndSegmentLength = 50, ToEndSegmentLength = 50
           }
           .Add(
-            new Shape { StrokeWidth = 1.5 },  // the link shape
-            new Shape { ToArrow = "Standard", Stroke = null }  // the arrowhead
+            new Shape { StrokeWidth = 1.5 }  // the link shape
           );
 
       _Diagram.GroupTemplate =  // assumes SwimLaneLayout.Direction == 0
@@ -227,26 +226,32 @@ namespace Demo.Extensions.SwimLane {
       var rect = layerRects[forwards ? layerRects.Count - 1 : 0];
       var totallength = horiz ? rect.Right : rect.Bottom;
 
-      foreach (var lane in LaneNames) {
-        // assume lane names do not conflict with node names
-        var group = Diagram.FindNodeForKey(lane);
-        if (group == null) {
-          Diagram.Model.AddNodeData(new NodeData { Key = lane, IsGroup = true });
-          group = Diagram.FindNodeForKey(lane);
-        }
-        if (horiz) {
-          group.Location = new Point(-LayerSpacing / 2, LanePositions[lane] * ColumnSpacing + offset.Y);
-        } else {
-          group.Location = new Point(LanePositions[lane] * ColumnSpacing + offset.X, -LayerSpacing / 2);
-        }
-        var ph = group.FindElement("PLACEHOLDER");  // won't be a go.Placeholder, but just a regular Shape
-        if (ph == null) ph = group;
-        if (horiz) {
-          ph.DesiredSize = new Size(totallength, LaneBreadths[lane] * ColumnSpacing);
-        } else {
-          ph.DesiredSize = new Size(LaneBreadths[lane] * ColumnSpacing, totallength);
-        }
+      if (horiz) {
+        offset.Y -= ColumnSpacing * 3 / 2;
+      } else {
+        offset.X -= ColumnSpacing * 3 / 2;
       }
+
+        foreach (var lane in LaneNames) {
+          // assume lane names do not conflict with node names
+          var group = Diagram.FindNodeForKey(lane);
+          if (group == null) {
+            Diagram.Model.AddNodeData(new NodeData { Key = lane, IsGroup = true });
+            group = Diagram.FindNodeForKey(lane);
+          }
+          if (horiz) {
+            group.Location = new Point(-LayerSpacing / 2, LanePositions[lane] * ColumnSpacing + offset.Y);
+          } else {
+            group.Location = new Point(LanePositions[lane] * ColumnSpacing + offset.X, -LayerSpacing / 2);
+          }
+          var ph = group.FindElement("PLACEHOLDER");  // won't be a go.Placeholder, but just a regular Shape
+          if (ph == null) ph = group;
+          if (horiz) {
+            ph.DesiredSize = new Size(totallength, LaneBreadths[lane] * ColumnSpacing);
+          } else {
+            ph.DesiredSize = new Size(LaneBreadths[lane] * ColumnSpacing, totallength);
+          }
+        }
     }
   }
 }

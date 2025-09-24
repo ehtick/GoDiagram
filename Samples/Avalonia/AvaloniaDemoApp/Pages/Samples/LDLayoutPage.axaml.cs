@@ -1,4 +1,4 @@
-/* Copyright 1998-2024 by Northwoods Software Corporation. */
+/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using Northwoods.Go.Layouts;
@@ -38,6 +38,10 @@ namespace Demo.Samples.LDLayout {
       median.IsCheckedChanged += (s, e) => _Layout();
       straighten.IsCheckedChanged += (s, e) => _Layout();
       expand.IsCheckedChanged += (s, e) => _Layout();
+      upperLeft.IsCheckedChanged += (s, e) => _AlignChanged();
+      upperRight.IsCheckedChanged += (s, e) => _AlignChanged();
+      lowerLeft.IsCheckedChanged += (s, e) => _AlignChanged();
+      lowerRight.IsCheckedChanged += (s, e) => _AlignChanged();
       setsPortSpots.IsCheckedChanged += (s, e) => _Layout();
     }
 
@@ -80,6 +84,21 @@ namespace Demo.Samples.LDLayout {
         }
       }
       _Layout();
+    }
+
+    private void _AlignChanged() {
+      if (_GetChecked(upperLeft) || _GetChecked(upperRight) || _GetChecked(lowerLeft) || _GetChecked(lowerRight)) {
+        _SetPackEnabled(false);
+      } else {
+        _SetPackEnabled(true);
+      }
+      _Layout();
+    }
+
+    private void _SetPackEnabled(bool value) {
+      median.IsEnabled = value;
+      straighten.IsEnabled = value;
+      expand.IsEnabled = value;
     }
   }
 }

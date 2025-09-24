@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using Northwoods.Go;
@@ -128,7 +128,7 @@ namespace Demo.Extensions.SnapLinkReshaping {
           new Node(PanelType.Table) {
             LocationSpot = Spot.Center
           }
-          .Bind(new Binding("Location", "Loc", Point.Parse, Point.Stringify))
+          .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
           .Add(
             new Panel(PanelType.Auto).Add(
               new Shape("Rectangle") {
@@ -139,9 +139,7 @@ namespace Demo.Extensions.SnapLinkReshaping {
                 MaxSize = new Size(160, double.NaN),
                 Wrap = Wrap.Fit,
                 Editable = true
-              }.Set(textStyle).Bind(
-                new Binding("Text").MakeTwoWay()
-              )
+              }.Set(textStyle).BindTwoWay("Text")
             ),
             MakePort("T", Spot.Top, Spot.TopSide, false, true),
             MakePort("L", Spot.Left, Spot.LeftSide, true, true),
@@ -154,7 +152,7 @@ namespace Demo.Extensions.SnapLinkReshaping {
           new Node(PanelType.Table) {
             LocationSpot = Spot.Center
           }
-          .Bind(new Binding("Location", "Loc", Point.Parse, Point.Stringify))
+          .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
           .Add(
             new Panel(PanelType.Auto).Add(
               new Shape("Diamond") {
@@ -165,9 +163,7 @@ namespace Demo.Extensions.SnapLinkReshaping {
                 MaxSize = new Size(160, double.NaN),
                 Wrap = Wrap.Fit,
                 Editable = true
-              }.Set(textStyle).Bind(
-                new Binding("Text").MakeTwoWay()
-              )
+              }.Set(textStyle).BindTwoWay("Text")
             ),
             MakePort("T", Spot.Top, Spot.TopSide, false, true),
             MakePort("L", Spot.Left, Spot.LeftSide, true, true),
@@ -180,7 +176,7 @@ namespace Demo.Extensions.SnapLinkReshaping {
           new Node(PanelType.Table) {
             LocationSpot = Spot.Center
           }
-          .Bind(new Binding("Location", "Loc", Point.Parse, Point.Stringify))
+          .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
           .Add(
             new Panel(PanelType.Auto).Add(
               new Shape("Circle") {
@@ -201,7 +197,7 @@ namespace Demo.Extensions.SnapLinkReshaping {
           new Node(PanelType.Table) {
             LocationSpot = Spot.Center
           }
-          .Bind(new Binding("Location", "Loc", Point.Parse, Point.Stringify))
+          .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
           .Add(
             new Panel(PanelType.Auto).Add(
               new Shape("Circle") {
@@ -222,7 +218,7 @@ namespace Demo.Extensions.SnapLinkReshaping {
           new Node(PanelType.Auto) {
             LocationSpot = Spot.Center
           }
-          .Bind(new Binding("Location", "Loc", Point.Parse, Point.Stringify))
+          .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
           .Add(
             new Shape("File") {
               Fill = "#282C34", Stroke = "#DEE0A3", StrokeWidth = 3.5
@@ -233,9 +229,8 @@ namespace Demo.Extensions.SnapLinkReshaping {
               Wrap = Wrap.Fit,
               TextAlign = TextAlign.Center,
               Editable = true
-            }.Set(textStyle).Bind(
-              new Binding("Text").MakeTwoWay()
-            ) // no ports, since links are not allowed to connect with a comment
+            }.Set(textStyle).BindTwoWay("Text")
+            // no ports, since links are not allowed to connect with a comment
           )
         }
       };
@@ -286,11 +281,11 @@ namespace Demo.Extensions.SnapLinkReshaping {
         Resizable = true, ResizeElementName = "PANEL",
         MouseEnter = (e, node, _) => { ShowSmallPorts(node, true); },
         MouseLeave = (e, node, _) => { ShowSmallPorts(node, false); }
-      }.Bind(new Binding("Location", "Loc", Point.Parse).MakeTwoWay(Point.Stringify))
+      }.BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
       .Add(
         new Panel("Auto") {
           Name = "PANEL"
-        }.Bind(new Binding("DesiredSize", "Size", Northwoods.Go.Size.Parse).MakeTwoWay(Northwoods.Go.Size.Stringify))
+        }.BindTwoWay("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify)
         .Add(new Shape("Rectangle") {
           PortId = "",
           FromLinkable = true, ToLinkable = true, Cursor = "Pointer",
@@ -302,9 +297,7 @@ namespace Demo.Extensions.SnapLinkReshaping {
           MaxSize = new Size(160, double.NaN),
           Wrap = Wrap.Fit,
           Editable = true
-        }.Bind(
-          new Binding("Text").MakeTwoWay()
-        )),
+        }.BindTwoWay("Text")),
         MakePort("T", Spot.Top, false, true),
         MakePort("L", Spot.Left, true, true),
         MakePort("R", Spot.Right, true, true),
@@ -330,8 +323,8 @@ namespace Demo.Extensions.SnapLinkReshaping {
         Curve = LinkCurve.JumpOver,
         Corner = 5,
         ToShortLength = 4
-      }.Bind(new Binding("Points").MakeTwoWay())
-       .Bind(new Binding("Routing").MakeTwoWay()).Add(
+      }.BindTwoWay("Points")
+       .BindTwoWay("Routing").Add(
         new Shape {
           IsPanelMain = true,
           StrokeWidth = 2

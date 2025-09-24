@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using Northwoods.Go;
@@ -65,7 +65,8 @@ namespace Demo.Samples.DataFlow {
       _Diagram.InitialContentAlignment = Spot.Left;
       _Diagram.InitialAutoScale = AutoScale.UniformToFill;
       _Diagram.Layout = new LayeredDigraphLayout {
-        Direction = 0
+        Direction = 0,
+        AlignOption = LayeredDigraphAlign.All
       };
       _Diagram.UndoManager.IsEnabled = true;
 
@@ -130,7 +131,7 @@ namespace Demo.Samples.DataFlow {
                         Stroke = "white",
                         Font = new Font("Segoe UI", 11, Northwoods.Go.FontWeight.Bold)
                       }
-                      .Bind(new Binding("Text", "Name").MakeTwoWay())
+                      .BindTwoWay("Text", "Name")
                   )
               ),
             new Panel("Vertical") {
@@ -147,31 +148,31 @@ namespace Demo.Samples.DataFlow {
         _Diagram.NodeTemplateMap[typename] = node;
       }
 
-      makeTemplate("Table", "https://nwoods.com/go/images/samples/table.png", "forestgreen",
+      makeTemplate("Table", "https://nwoods.com/images/samples/table.png", "forestgreen",
         Array.Empty<Panel>(),
         new Panel[] { makePort("OUT", false) });
 
-      makeTemplate("Join", "https://nwoods.com/go/images/samples/join.png", "mediumorchid",
+      makeTemplate("Join", "https://nwoods.com/images/samples/join.png", "mediumorchid",
         new Panel[] { makePort("L", true), makePort("R", true) },
         new Panel[] { makePort("UL", false), makePort("ML", false), makePort("M", false), makePort("MR", false), makePort("UR", false) });
 
-      makeTemplate("Project", "https://nwoods.com/go/images/samples/project.png", "darkcyan",
+      makeTemplate("Project", "https://nwoods.com/images/samples/project.png", "darkcyan",
         new Panel[] { makePort("", true) },
         new Panel[] { makePort("OUT", false) });
 
-      makeTemplate("Filter", "https://nwoods.com/go/images/samples/filter.png", "cornflowerblue",
+      makeTemplate("Filter", "https://nwoods.com/images/samples/filter.png", "cornflowerblue",
         new Panel[] { makePort("", true) },
         new Panel[] { makePort("OUT", false), makePort("INV", false) });
 
-      makeTemplate("Group", "https://nwoods.com/go/images/samples/group.png", "mediumpurple",
+      makeTemplate("Group", "https://nwoods.com/images/samples/group.png", "mediumpurple",
         new Panel[] { makePort("", true) },
         new Panel[] { makePort("OUT", false) });
 
-      makeTemplate("Sort", "https://nwoods.com/go/images/samples/sort.png", "sienna",
+      makeTemplate("Sort", "https://nwoods.com/images/samples/sort.png", "sienna",
         new Panel[] { makePort("", true) },
         new Panel[] { makePort("OUT", false) });
 
-      makeTemplate("Export", "https://nwoods.com/go/images/samples/upload.png", "darkred",
+      makeTemplate("Export", "https://nwoods.com/images/samples/upload.png", "darkred",
         new Panel[] { makePort("", true) },
         Array.Empty<Panel>());
 

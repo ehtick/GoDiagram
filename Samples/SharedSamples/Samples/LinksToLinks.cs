@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using Northwoods.Go;
@@ -51,7 +51,7 @@ namespace Demo.Samples.LinksToLinks {
         new Node(PanelType.Auto) {
           LocationSpot = Spot.Center,
           LayerName = "Background"  // always have regular nodes behing links
-        }.Bind(new Binding("Location", "Loc", Point.Parse).MakeTwoWay(Point.Stringify))
+        }.BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
         .Add(
           new Shape {
             Figure = "RoundedRectangle",

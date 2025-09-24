@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -171,14 +171,14 @@ namespace Demo.Samples.PageFlow {
               Editable = true,
               Font = smallFont
             }
-              .Bind(new Binding("Text").MakeTwoWay())
+              .BindTwoWay("Text")
           );
 
       sharedNodeTemplateMap = new Dictionary<string, Part>() {
         {
           "",
           new Node("Auto") { SelectionAdornmentTemplate = defaultAdornment }
-            .Bind("Location", "Loc", Point.Parse, Point.Stringify)
+            .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
             .Add(
               // define the node's outer shape, which will surround the TextBlock
               new Shape("Rectangle") {
@@ -191,13 +191,13 @@ namespace Demo.Samples.PageFlow {
                   Font = bigFont,
                   Editable = true
                 }
-                .Bind(new Binding("Text").MakeTwoWay())
+                .BindTwoWay("Text")
             )
         },
         {
           "Source",
           new Node("Auto")
-            .Bind("Location", "Loc", Point.Parse, Point.Stringify)
+            .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
             .Add(
               new Shape("RoundedRectangle") {
                   Fill = bluegrad,
@@ -205,26 +205,26 @@ namespace Demo.Samples.PageFlow {
                 },
               new TextBlock("Source")
                 .Set(textStyle)
-                .Bind(new Binding("Text").MakeTwoWay())
+                .BindTwoWay("Text")
             )
         },
         {
           "DesiredEvent",
           new Node("Auto")
-            .Bind("Location", "Loc", Point.Parse, Point.Stringify)
+            .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
             .Add(
               new Shape("RoundedRectangle") {
                   Fill = greengrad, PortId = "", ToLinkable = true, ToEndSegmentLength = 50
                 },
               new TextBlock("Success!")
                 .Set(textStyle)
-                .Bind(new Binding("Text").MakeTwoWay())
+                .BindTwoWay("Text")
             )
         },
         {
           "UndesiredEvent",
           new Node("Auto") { SelectionAdornmentTemplate = UndesiredEventAdornment }
-            .Bind("Location", "Loc", Point.Parse, Point.Stringify)
+            .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
             .Add(
               new Shape("RoundedRectangle") {
                   Fill = redgrad, PortId = "", ToLinkable = true, ToEndSegmentLength = 50
@@ -236,19 +236,19 @@ namespace Demo.Samples.PageFlow {
                       MinSize = new Size(80, double.NaN)
                     }
                     .Set(textStyle)
-                    .Bind(new Binding("Text").MakeTwoWay()),
+                    .BindTwoWay("Text"),
                   new Panel("Vertical") {
                       DefaultAlignment = Spot.TopLeft,
                       ItemTemplate = reasonTemplate
                     }
-                    .Bind(new Binding("ItemList", "ReasonsList").MakeTwoWay())
+                    .BindTwoWay("ItemList", "ReasonsList")
                 )
             )
         },
         {
           "Comment",
           new Node("Auto")
-            .Bind("Location", "Loc", Point.Parse, Point.Stringify)
+            .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
             .Add(
               new Shape("Rectangle") {
                   PortId = "", Fill = whitegrad, FromLinkable = true
@@ -260,7 +260,7 @@ namespace Demo.Samples.PageFlow {
                   Editable = true,
                   Font = smallFont
                 }
-                .Bind(new Binding("Text").MakeTwoWay())
+                .BindTwoWay("Text")
             )
         }
       };
@@ -276,7 +276,8 @@ namespace Demo.Samples.PageFlow {
       _Diagram.Layout = new LayeredDigraphLayout {
         IsInitial = false,
         IsOngoing = false,
-        LayerSpacing = 50
+        LayerSpacing = 50,
+        AlignOption = LayeredDigraphAlign.All
       };
       _Diagram.UndoManager.IsEnabled = true;
 

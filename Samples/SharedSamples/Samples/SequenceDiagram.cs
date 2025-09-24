@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -68,7 +68,7 @@ namespace Demo.Samples.SequenceDiagram {
           MaxLocation = new Point(9999, 0),
           SelectionElementName = "HEADER"
         }
-          .Bind("Location", "Loc", Point.Parse, Point.Stringify)
+          .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
           .Add(
             new Panel("Auto") {
               Name = "HEADER"
@@ -151,7 +151,7 @@ namespace Demo.Samples.SequenceDiagram {
               IsMultiline = false,
               Editable = true
             }
-              .Bind(new Binding("Text").MakeTwoWay())
+              .BindTwoWay("Text")
           );
 
       // create the graph by reading the JSONdata saved in the textarea element

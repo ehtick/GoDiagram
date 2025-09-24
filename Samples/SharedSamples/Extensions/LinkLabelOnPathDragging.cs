@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using Northwoods.Go;
@@ -59,12 +59,8 @@ namespace Demo.Extensions.LinkLabelOnPathDragging {
           new TextBlock {
             Text = "?",
             Margin = 3
-          }.Bind(
-            new Binding("Text", "Color")
-          )).Bind(
-          // remember any modified segment properties in the link data object
-          new Binding("SegmentFraction").MakeTwoWay()
-        );
+          }.Bind("Text", "Color")
+        ).BindTwoWay("SegmentFraction"); // remember any modified segment properties in the link data object
       // add _IsLinkLabel ad-hoc property
       panel["_IsLinkLabel"] = true;
 

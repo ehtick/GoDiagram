@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -86,7 +86,7 @@ namespace Demo.Samples.StateChart {
           ShadowOffset = new Point(0, 1),
           ShadowColor = "rgba(0, 0, 0, .14)"
         }
-          .Bind("Location", "Loc", Point.Parse, Point.Stringify)
+          .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
           .Add(
             // define the node's outer shape, which will surround the TextBlock
             new Shape("RoundedRectangle") {
@@ -102,7 +102,7 @@ namespace Demo.Samples.StateChart {
               Font = new Font("Segoe UI", 11, Northwoods.Go.FontWeight.Bold), Margin = 7, Stroke = "rgba(0, 0, 0, .87)",
               Editable = true // editing the text automatically updates the model data
             }
-              .Bind(new Binding("Text").MakeTwoWay())
+              .BindTwoWay("Text")
           );
 
       // clicking the button inserts a new node to the right of the selected node,
@@ -167,7 +167,7 @@ namespace Demo.Samples.StateChart {
       // define more node templates
       _Diagram.NodeTemplateMap.Add("Start",
         new Node("Spot") { DesiredSize = new Size(75, 75) }
-          .Bind("Location", "Loc", Point.Parse, Point.Stringify)
+          .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
           .Add(
             new Shape("Circle") {
               Fill = "#52ce60",  // green
@@ -186,7 +186,7 @@ namespace Demo.Samples.StateChart {
 
       _Diagram.NodeTemplateMap.Add("End",
         new Node("Spot") { DesiredSize = new Size(75, 75) }
-          .Bind("Location", "Loc", Point.Parse, Point.Stringify)
+          .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
           .Add(
             new Shape("Circle") {
               Fill = "maroon",
@@ -215,7 +215,7 @@ namespace Demo.Samples.StateChart {
           Reshapable = true, RelinkableFrom = true, RelinkableTo = true,
           ToShortLength = 3
         }
-          .Bind(new Binding("Points").MakeTwoWay())
+          .BindTwoWay("Points")
           .Bind("Curviness")
           .Add(
             new Shape { StrokeWidth = 1.5 }  // the link shape
@@ -243,7 +243,7 @@ namespace Demo.Samples.StateChart {
                   Margin = 4,
                   Editable = true  // enable in-place editing
                 }
-                  .Bind(new Binding("Text").MakeTwoWay())
+                  .BindTwoWay("Text")
               )
           );
 

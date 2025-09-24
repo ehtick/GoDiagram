@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -37,9 +37,8 @@ namespace Demo.Samples.UpdateDemo {
 
       // blue diagram node template
       blueDiagram.NodeTemplate =
-        new Node(PanelType.Auto).Bind(
-          new Binding("Location", "Loc").MakeTwoWay()
-        ).Add(
+        new Node(PanelType.Auto).BindTwoWay("Location", "Loc")
+        .Add(
           new Shape {
             Figure = "RoundedRectangle",
             Fill = new Brush(new LinearGradientPaint(new Dictionary<float, string> {
@@ -62,9 +61,7 @@ namespace Demo.Samples.UpdateDemo {
             Font = new Font("Arial", 10, Northwoods.Go.FontWeight.Bold),
             Stroke = "whitesmoke",
             Editable = true
-          }.Bind(
-            new Binding("Text").MakeTwoWay()
-          )
+          }.BindTwoWay("Text")
         );
 
       // blue diagram link template
@@ -94,9 +91,8 @@ namespace Demo.Samples.UpdateDemo {
 
       // green diagram node template
       greenDiagram.NodeTemplate =
-        new Node(PanelType.Vertical).Bind(
-          new Binding("Location", "Loc").MakeTwoWay()
-        ).Add(
+        new Node(PanelType.Vertical).BindTwoWay("Location", "Loc")
+        .Add(
           new Shape {
             Figure = "Ellipse",
             Fill = "lightgreen",

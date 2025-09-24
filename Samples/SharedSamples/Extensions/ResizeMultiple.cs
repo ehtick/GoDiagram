@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using Northwoods.Go;
@@ -26,9 +26,9 @@ namespace Demo.Extensions.ResizeMultiple {
         new Node(PanelType.Auto) {
           Resizable = true
         }.Bind(
-          new Binding("Location", "Loc", Point.Parse).MakeTwoWay(Point.Stringify),
+          new Binding("Location", "Loc", Point.Parse, Point.Stringify),
           // save the modified size in the node data
-          new Binding("DesiredSize", "Size", Northwoods.Go.Size.Parse).MakeTwoWay(Northwoods.Go.Size.Stringify))
+          new Binding("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify))
         .Add(
           new Shape {
             Figure = "RoundedRectangle",

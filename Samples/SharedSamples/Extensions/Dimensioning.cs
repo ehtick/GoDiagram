@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -25,7 +25,7 @@ namespace Demo.Extensions.Dimensioning {
       // a simple resizable node
       _Diagram.NodeTemplate = new Node(PanelType.Auto) {
         LocationSpot = Spot.Center, Resizable = true
-      }.Bind(new Binding("Location", "Loc", Point.Parse, Point.Stringify))
+      }.BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
       .Add(
        new Shape {
          StrokeWidth = 0, Fill = "lightgray"

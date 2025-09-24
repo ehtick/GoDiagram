@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using Northwoods.Go;
@@ -27,6 +27,7 @@ namespace Demo.Samples.BeatPaths {
       _Diagram.Layout =
         new LayeredDigraphLayout {
           Direction = 90,
+          AlignOption = LayeredDigraphAlign.All,
           LayerSpacing = 10,
           ColumnSpacing = 15,
           SetsPortSpots = false

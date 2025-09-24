@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,7 +23,7 @@ namespace Demo.Samples.Macros {
       goWebBrowser1.Html = @"
     <p>
     When one drags the ""Macro"" node (actually a <a>Group</a>) from the Palette into the main Diagram,
-    the ""ExternalObjectsDropped"" <a>DiagramEvent</a> listener automatically ungroups that group node
+    the ""ExternalElementsDropped"" <a>DiagramEvent</a> listener automatically ungroups that group node
     to show all of its members nodes and links that were copied by the drag-and-drop.
     </p>
 
@@ -42,7 +42,7 @@ namespace Demo.Samples.Macros {
         // converted by the Point.Parse method.
         // If the Node.Location is changed, it updates the "Loc" property,
         // converting back using the Point.Stringify method.
-      }.Bind("Location", "Loc", Point.Parse, Point.Stringify)
+      }.BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
        .Add(
          new Shape {
            Figure = "Rectangle",
@@ -60,13 +60,13 @@ namespace Demo.Samples.Macros {
            Editable = true,
            Name = "TEXT",
            Font = new Font("Segoe UI", 16)
-         }.Bind(new Binding("Text", "Text").MakeTwoWay())
+         }.BindTwoWay("Text")
       );
 
       sharedGroupTemplate = new Group(PanelType.Auto) {
         IsSubGraphExpanded = false, // only show the group itself, not any of its members
         Ungroupable = true
-      }.Add( // allow the ExternalObjectsDropped event handler to ungroup
+      }.Add( // allow the ExternalElementsDropped event handler to ungroup
              // the members to be top-level parts, via a command
         new Shape {
           Figure = "Rectangle", // the rectangular shape around the members

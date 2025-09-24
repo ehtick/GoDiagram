@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -110,7 +110,7 @@ namespace Demo.Samples.Kanban {
                         Stroke = "#000", MaxSize = new Size(130, double.NaN),
                         Alignment = Spot.TopLeft
                       }
-                      .Bind(new Binding("Text").MakeTwoWay())
+                      .BindTwoWay("Text")
                   )
               )
           );

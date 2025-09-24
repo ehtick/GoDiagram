@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using Northwoods.Go;
@@ -23,7 +23,7 @@ namespace Demo.Extensions.ParallelRoute {
       _Diagram.UndoManager.IsEnabled = true;
 
       _Diagram.NodeTemplate = new Node(PanelType.Auto)
-        .Bind("Location", "Loc", Point.Parse, Point.Stringify).Add(
+        .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify).Add(
           new Shape {
             PortId = "",
             FromLinkable = true,

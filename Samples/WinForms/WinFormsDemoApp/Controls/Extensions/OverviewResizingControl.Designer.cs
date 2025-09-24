@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 namespace Demo.Extensions.OverviewResizing {
   partial class OverviewResizing {

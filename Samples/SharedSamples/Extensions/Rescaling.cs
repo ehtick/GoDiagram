@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using Northwoods.Go;
@@ -28,7 +28,7 @@ namespace Demo.Extensions.Rescaling {
       _Diagram.NodeTemplate =
         new Node(PanelType.Auto) {
           LocationSpot = Spot.Center
-        }.Bind(new Binding("Scale").MakeTwoWay())
+        }.BindTwoWay("Scale")
         .Add(new Shape {
           Figure = "RoundedRectangle",
           StrokeWidth = 0

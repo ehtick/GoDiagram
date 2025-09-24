@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -369,7 +369,7 @@ namespace Demo.Samples.BlockEditor {
           },
           Avoidable = false
         }
-          .Bind("Location", "Loc", Point.Parse, Point.Stringify)
+          .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
           .Add(
             new Panel("Auto") {
               Name = "BODY"

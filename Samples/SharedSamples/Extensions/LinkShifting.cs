@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using Northwoods.Go;
@@ -30,7 +30,7 @@ namespace Demo.Extensions.LinkShifting {
           FromLinkable = true,
           ToLinkable = true,
           LocationSpot = Spot.Center
-        }.Bind(new Binding("Location", "Loc", Point.Parse).MakeTwoWay(Point.Stringify))
+        }.BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
         .Add(
           new Shape {
             Fill = "lightgray"
@@ -56,8 +56,8 @@ namespace Demo.Extensions.LinkShifting {
           // remember the (potentially) user-modified route
           new Binding("Points").MakeTwoWay(),
           // remember any spots modified by LinkShiftingTool
-          new Binding("FromSpot", "FromSpot", Spot.Parse).MakeTwoWay(Spot.Stringify),
-          new Binding("ToSpot", "ToSpot", Spot.Parse).MakeTwoWay(Spot.Stringify))
+          new Binding("FromSpot", "FromSpot", Spot.Parse, Spot.Stringify),
+          new Binding("ToSpot", "ToSpot", Spot.Parse, Spot.Stringify))
         .Add(
           new Shape(),
           new Shape {

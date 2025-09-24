@@ -1,4 +1,4 @@
-/* Copyright 1998-2024 by Northwoods Software Corporation. */
+/* Copyright (c) Northwoods Software Corporation. */
 
 namespace Demo.Samples.Grafcet {
   public partial class Grafcet : DemoControl {

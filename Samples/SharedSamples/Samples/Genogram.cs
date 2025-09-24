@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -433,6 +433,7 @@ namespace Demo.Samples.Genogram {
     public double SpouseSpacing { get; set; }
 
     public GenogramLayout() : base() {
+      AlignOption = LayeredDigraphAlign.All;
       InitializeOption = LayeredDigraphInit.DepthFirstIn;
       SpouseSpacing = 30;
     }
@@ -588,15 +589,28 @@ namespace Demo.Samples.Genogram {
       // (other than the ones that are the widest and tallest in their respective layer).
     }
 
+    protected override void InitializeIndices() {
+      base.InitializeIndices();
+      var vertical = Direction == 90 || Direction == 270;
+      foreach (var e in Network.Edges) {
+        if (e.FromVertex.Node != null && e.FromVertex.Node.IsLinkLabel) {
+          e.PortFromPos = (int)(vertical ? e.FromVertex.FocusX : e.FromVertex.FocusY);
+        }
+        if (e.ToVertex.Node != null && e.ToVertex.Node.IsLinkLabel) {
+          e.PortToPos = (int)(vertical ? e.ToVertex.FocusX : e.ToVertex.FocusY);
+        }
+      }
+    }
+
     protected override void CommitNodes() {
       base.CommitNodes();
-      var horiz = Direction == 0.0 || Direction == 180.0;
       // position regular nodes
       foreach (var v in Network.Vertexes) {
         if (v.Node != null && !v.Node.IsLinkLabel) {
-          v.Node.Move(v.X, v.Y);
+          v.Node.Position = new Point(v.X, v.Y);
         }
       }
+      var horiz = Direction == 0.0 || Direction == 180.0;
       // position the spouses of each marriage vertex
       var layout = this;
       foreach (var v in Network.Vertexes) {
@@ -618,12 +632,12 @@ namespace Demo.Samples.Genogram {
             spouseB = temp;
           }
           // see if the parents are on the desired sides, to avoid a link crossing
-          var aParentsNode = layout.FindParentsMarriageLabelNode(spouseA);
-          var bParentsNode = layout.FindParentsMarriageLabelNode(spouseB);
-          if (aParentsNode != null && bParentsNode != null &&
+          var labA = layout.FindParentsMarriageLabelNode(spouseA);
+          var labB = layout.FindParentsMarriageLabelNode(spouseB);
+          if (labA != null && labB != null &&
               (horiz
-                ? aParentsNode.Position.Y > bParentsNode.Position.Y
-                : aParentsNode.Position.X > bParentsNode.Position.X)) {
+                ? labA.Position.Y > labB.Position.Y
+                : labA.Position.X > labB.Position.X)) {
             // swap the spouses again
             var temp = spouseA;
             spouseA = spouseB;
@@ -651,27 +665,6 @@ namespace Demo.Samples.Genogram {
           if (horiz) pos.Y++;
           else pos.X++;
           spouseB.Move(pos);
-        }
-        lablink.EnsureBounds();
-      }
-      // position only-child nodes to be under the marriage label node
-      foreach (var v in Network.Vertexes) {
-        if (v.Node == null || v.Node.LinksConnected.Count() > 1) continue;
-        var mnode = layout.FindParentsMarriageLabelNode(v.Node);
-        if (mnode != null && mnode.LinksConnected.Count() == 1) { // if only one child
-          var mvert = layout.Network.FindVertex(mnode);
-          var newbnds = v.Node.ActualBounds;
-          if (horiz) {
-            newbnds.Y = mvert.CenterY - v.Node.ActualBounds.Height / 2;
-          } else {
-            newbnds.X = mvert.CenterX - v.Node.ActualBounds.Width / 2;
-          }
-          // see if there's any empty space at the horizontal mid-point in that layer
-          var overlaps = new List<Part>();
-          layout.Diagram.FindElementsIn(newbnds, x => x.Part, p => p != v.Node, true, overlaps);
-          if (overlaps.Count == 0) {
-            v.Node.Move(newbnds.Position);
-          }
         }
       }
     }

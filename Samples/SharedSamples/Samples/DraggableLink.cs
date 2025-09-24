@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using Northwoods.Go;
@@ -178,9 +178,8 @@ namespace Demo.Samples.DraggableLink {
           // the main object is a Panel that surrounds a TextBlock with a Shape
           new Panel(PanelType.Auto) {
             Name = "PANEL"
-          }.Bind(
-            new Binding("DesiredSize", "Size", Northwoods.Go.Size.Parse).MakeTwoWay(Northwoods.Go.Size.Stringify)
-          ).Add(
+          }.BindTwoWay("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify)
+          .Add(
             new Shape {
               Figure = "Rectangle",
               PortId = "", // the default Port = if no spot on link data, use closest side
@@ -199,9 +198,7 @@ namespace Demo.Samples.DraggableLink {
               MaxSize = new Size(160, double.NaN),
               Wrap = Wrap.Fit,
               Editable = true
-            }.Bind(
-              new Binding("Text").MakeTwoWay()
-            )
+            }.BindTwoWay("Text")
           ),
           // four small named ports, one on each side:
           MakePort("T", Spot.Top, false, true),
@@ -273,9 +270,8 @@ namespace Demo.Samples.DraggableLink {
           Curve = LinkCurve.JumpOver,
           Corner = 5,
           ToShortLength = 4
-        }.Bind(
-          new Binding("Points").MakeTwoWay()
-        ).Add(
+        }.BindTwoWay("Points")
+        .Add(
           new Shape { // the link path shape
             IsPanelMain = true,
             StrokeWidth = 2
@@ -299,9 +295,7 @@ namespace Demo.Samples.DraggableLink {
               Margin = 2,
               MinSize = new Size(10, double.NaN),
               Editable = true
-            }.Bind(
-              new Binding("Text").MakeTwoWay()
-            )
+            }.BindTwoWay("Text")
           )
         );
 

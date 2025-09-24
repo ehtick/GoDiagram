@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -12,9 +12,8 @@ namespace WinFormsDemoApp {
   static class DemoIndex {
     // Map short names to NavItems
     public static Dictionary<string, NavItem> Samples = new(StringComparer.InvariantCultureIgnoreCase) {
-      // Samples on short List corresponding to GoJS order
-      { "OrgChartStatic", new NavItem("Org Chart (Static)", typeof(Demo.Samples.OrgChartStatic.OrgChartStatic)) },
       { "OrgChartEditor", new NavItem("Org Chart Editor", typeof(Demo.Samples.OrgChartEditor.OrgChartEditor)) },
+      { "OrgChartStatic", new NavItem("Org Chart (Static)", typeof(Demo.Samples.OrgChartStatic.OrgChartStatic)) },
       { "FamilyTree", new NavItem("Family Tree", typeof(Demo.Samples.FamilyTree.FamilyTree)) },
       { "Genogram", new NavItem("Genogram", typeof(Demo.Samples.Genogram.Genogram)) },
       { "DoubleTree", new NavItem("Double Tree", typeof(Demo.Samples.DoubleTree.DoubleTree)) },

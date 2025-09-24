@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -48,8 +48,8 @@ namespace Demo.Samples.FamilyTreeJP {
       // Set up a Part as a legend, and place it directly on the diagram
       myDiagram.Add(
         new Part(PanelType.Table) {
-          Position = new Point(10, 10),
-          Selectable = false
+          LayerName = "ViewportBackground",
+          Alignment = new Spot(0, 0, 20, 20)
         }.Add(
           new TextBlock {
             Text = "Key",

@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -106,8 +106,8 @@ namespace Demo.Samples.SharedStates {
       MyDiagram.Layout = new CustomLayout();
       MyDiagram.UndoManager.IsEnabled = true;
 
-      MyDiagram.NodeTemplate = new Node(PanelType.Auto).Bind(
-        new Binding("Location", "Loc", Point.Parse, Point.Stringify))
+      MyDiagram.NodeTemplate = new Node(PanelType.Auto)
+        .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
         .Add(
           // define the node's outer shape, which will surround the TextBlock
           new Shape {
@@ -115,9 +115,7 @@ namespace Demo.Samples.SharedStates {
             Fill = "rgb(254, 201, 0)", Stroke = "black", Parameter1 = 20, // the corner has a large radius
             PortId = "", FromSpot = Spot.AllSides, ToSpot = Spot.AllSides
           },
-          new TextBlock().Bind(
-            new Binding("Text", "Text").MakeTwoWay()
-          )
+          new TextBlock().BindTwoWay("Text")
         );
 
       MyDiagram.NodeTemplateMap.Add("Super",

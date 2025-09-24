@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -114,9 +114,8 @@ namespace Demo.Samples.DraggablePorts {
           LocationSpot = Spot.Center,
           LocationElementName = "ICON",
           Layout = new InputOutputGroupLayout()
-        }.Bind(
-          new Binding("Location", "Loc", Point.Parse).MakeTwoWay(Point.Stringify)
-        ).Set(
+        }.BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
+        .Set(
           new {
             MouseDrop = new Action<InputEvent, GraphObject>((e, g) => {
               // when the selection is entirely ports and is dropped onto a Group, transfer membership
@@ -158,7 +157,7 @@ namespace Demo.Samples.DraggablePorts {
                 Stretch = Stretch.Fill
               },
               new Picture {
-                Source = "https://nwoods.com/go/images/samples/60x90.png",
+                Source = "https://nwoods.com/images/samples/60x90.png",
                 Width = 60,
                 Height = 90,
                 Scale = 0.5

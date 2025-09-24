@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -56,7 +56,7 @@ namespace Demo.Samples.ConstantSize {
                     new Panel("Vertical")
                       .Add(
                         new Picture { Margin = 3 }
-                          .Bind("Source", "Src", (s) => { return "https://nwoods.com/go/images/samples/" + s + ".png"; }),
+                          .Bind("Source", "Src", (s) => { return "https://nwoods.com/images/samples/" + s + ".png"; }),
                         new TextBlock { Margin = 3 }
                           .Bind("Text", "Key")
                     )

@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using Northwoods.Go;
 using Northwoods.Go.Models;
@@ -53,11 +53,11 @@ namespace Demo.Extensions.FreehandDrawing {
                   new Placeholder { Margin = -1 }
                 )
           }
-          .Bind("Location", "Loc", Point.Parse, Point.Stringify)
+          .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
           .Add(
             new Shape { Name = "SHAPE", Fill = null, StrokeWidth = 1.5 }
               .Bind(
-                new Binding("DesiredSize", "Size", Northwoods.Go.Size.Parse).MakeTwoWay(Northwoods.Go.Size.Stringify),
+                new Binding("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify),
                 new Binding("Angle").MakeTwoWay(),
                 new Binding("GeometryString", "Geo").MakeTwoWay(),
                 new Binding("Fill"),

@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -144,9 +144,8 @@ namespace Demo.Samples.ProductionEditor {
                 })
               )
             )
-      }.Bind(
-          new Binding("Location", "Pos", Point.Parse).MakeTwoWay(Point.Stringify)
-        ).Add(
+      }.BindTwoWay("Location", "Pos", Point.Parse, Point.Stringify)
+        .Add(
           // The main element of the Spot panel is a vertical panel housing an optional icon,
           // plus a rectangle that acts as the port
           new Panel(PanelType.Vertical).Add(
@@ -182,9 +181,7 @@ namespace Demo.Samples.ProductionEditor {
               Alignment = Spot.Top,
               AlignmentFocus = Spot.Bottom,
               Editable = true
-            }.Bind(
-              new Binding("Text").MakeTwoWay()
-            )
+            }.BindTwoWay("Text")
           )
         );
 

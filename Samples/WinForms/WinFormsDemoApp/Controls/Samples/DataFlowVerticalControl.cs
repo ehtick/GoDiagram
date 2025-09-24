@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.ComponentModel;
@@ -87,7 +87,8 @@ namespace Demo.Samples.DataFlowVertical {
       myDiagram.InitialContentAlignment = Spot.Top;
       myDiagram.InitialAutoScale = AutoScale.UniformToFill;
       myDiagram.Layout = new LayeredDigraphLayout {
-        Direction = 90
+        Direction = 90,
+        AlignOption = LayeredDigraphAlign.All
       };
       myDiagram.UndoManager.IsEnabled = true;
 
@@ -160,7 +161,7 @@ namespace Demo.Samples.DataFlowVertical {
                         Stroke = "black",
                         Font = new Font("Segoe UI", 11, FontWeight.Bold)
                       }
-                      .Bind(new Binding("Text", "Name").MakeTwoWay())
+                      .BindTwoWay("Text", "Name")
                   )
               ),
             new Panel("Horizontal") {

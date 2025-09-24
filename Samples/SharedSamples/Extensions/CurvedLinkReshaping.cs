@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using Northwoods.Go;
@@ -66,7 +66,7 @@ namespace Demo.Extensions.CurvedLinkReshaping {
 
       _Diagram.NodeTemplate =
         new Node(PanelType.Auto)
-          .Bind("Location", "Loc", Point.Parse, Point.Stringify)
+          .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
           .Add(new Shape {
             Parameter1 = 20,
             Figure = "RoundedRectangle",
@@ -85,9 +85,7 @@ namespace Demo.Extensions.CurvedLinkReshaping {
             Font = new Font("Arial", 11, Northwoods.Go.FontWeight.Bold),
             Editable = true,
             Margin = 0
-          }.Bind(
-            new Binding("Text", "Text").MakeTwoWay()
-          )
+          }.BindTwoWay("Text")
         );
 
       void AddNodeAndLink(InputEvent e, GraphObject obj) {
@@ -160,7 +158,7 @@ namespace Demo.Extensions.CurvedLinkReshaping {
       // replace default link template
       _Diagram.LinkTemplate =
         new Link { Curve = LinkCurve.Bezier, Reshapable = true }
-          .Bind(new Binding("Curviness", "Curviness").MakeTwoWay())
+          .BindTwoWay("Curviness")
           .Add(new Shape { // link shape
             StrokeWidth = 1.5
           },
@@ -180,7 +178,7 @@ namespace Demo.Extensions.CurvedLinkReshaping {
               Stroke = "black",
               Margin = 4,
               Editable = true
-            }.Bind(new Binding("Text", "Text").MakeTwoWay())
+            }.BindTwoWay("Text")
           )
         );
 

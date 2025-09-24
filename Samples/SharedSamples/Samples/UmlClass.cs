@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using Northwoods.Go;
@@ -55,26 +55,21 @@ namespace Demo.Samples.UmlClass {
           new TextBlock {
             IsMultiline = false,
             Editable = true
-          }.Bind(
-            new Binding("Text", "Name").MakeTwoWay()
-          ),
+          }.BindTwoWay("Text", "Name"),
           // property type, if known
           new TextBlock().Bind(
             new Binding("Text", "Type", (t) => { return (t as string != null ? ": " : ""); })),
           new TextBlock {
             IsMultiline = false,
             Editable = true
-          }.Bind(
-            new Binding("Text", "Type").MakeTwoWay()
-          ),
+          }.BindTwoWay("Text", "Type"),
           // property default value, if any
           new TextBlock {
             IsMultiline = false,
             Editable = false
-          }.Bind(
-            new Binding("Text", "Default", (s) => {
+          }.Bind("Text", "Default", (s) => {
               return s as string != null ? " = " + s : "";
-            })
+            }
           )
         );
 
@@ -86,22 +81,18 @@ namespace Demo.Samples.UmlClass {
             IsMultiline = false,
             Editable = false,
             Width = 12
-          }.Bind(
-            new Binding("Text", "Visibility", ConvertVisibility)
-          ),
+          }.Bind("Text", "Visibility", ConvertVisibility),
           // method name, underlined if scope=="class" to indicate static method
           new TextBlock {
             IsMultiline = false,
             Editable = true
-          }.Bind(
-            new Binding("Text", "Name").MakeTwoWay()
-          ),
+          }.BindTwoWay("Text", "Name"),
           // method parameters
           new TextBlock {
             Text = "()"
           }.Bind(
             // this does not permit adding/editing/removing of parameters via inplace edits
-            new Binding("Text", "Parameters", (parrAsObj) => {
+            "Text", "Parameters", (parrAsObj) => {
               var parr = parrAsObj as List<ClassParam>;
               var s = "(";
               for (var i = 0; i < parr.Count; i++) {
@@ -110,22 +101,19 @@ namespace Demo.Samples.UmlClass {
                 s += param.Name + ": " + param.Type;
               }
               return s + ")";
-            })
+            }
           ),
           // method return type, if any
           new TextBlock {
             Text = ""
-          }.Bind(
-            new Binding("Text", "Type", (t) => {
+          }.Bind("Text", "Type", (t) => {
               return (t as string != null ? ": " : "");
-            })
+            }
           ),
           new TextBlock {
             IsMultiline = false,
             Editable = true
-          }.Bind(
-            new Binding("Text", "Type").MakeTwoWay()
-          )
+          }.BindTwoWay("Text", "Type")
         );
 
       // this simple template does not have any buttons to permit adding or
@@ -151,9 +139,7 @@ namespace Demo.Samples.UmlClass {
               Font = new Font("Segoe UI", 12, Northwoods.Go.FontWeight.Bold),
               IsMultiline = false,
               Editable = true
-            }.Bind(
-              new Binding("Text", "Name").MakeTwoWay()
-            ),
+            }.BindTwoWay("Text", "Name"),
             // properties
             new TextBlock {
               Text = "Properties",
@@ -171,9 +157,7 @@ namespace Demo.Samples.UmlClass {
               DefaultAlignment = Spot.Left,
               Background = "lightyellow",
               ItemTemplate = propertyTemplate
-            }.Bind(
-              new Binding("ItemList", "Properties")
-            ),
+            }.Bind("ItemList", "Properties"),
             Builder.Make<Panel>("PanelExpanderButton", "PROPERTIES").Set(
               new {
                 Row = 1,
@@ -181,11 +165,9 @@ namespace Demo.Samples.UmlClass {
                 Alignment = Spot.TopRight,
                 Visible = false
               }
-            ).Bind(
-              new Binding("Visible", "Properties", (arr) => {
+            ).Bind("Visible", "Properties", (arr) => {
                 return (arr as List<ClassProperty>).Count > 0;
-              })
-            ),
+              }),
             // methods
             new TextBlock {
               Text = "Methods",
@@ -204,9 +186,7 @@ namespace Demo.Samples.UmlClass {
               DefaultAlignment = Spot.Left,
               Background = "lightyellow",
               ItemTemplate = methodTemplate
-            }.Bind(
-              new Binding("ItemList", "Methods")
-            ),
+            }.Bind("ItemList", "Methods"),
             Builder.Make<Panel>("PanelExpanderButton", "METHODS").Set(
               new {
                 Row = 2,
@@ -214,10 +194,9 @@ namespace Demo.Samples.UmlClass {
                 Alignment = Spot.TopRight,
                 Visible = false
               }
-            ).Bind(
-              new Binding("Visible", "Methods", (arr) => {
+            ).Bind("Visible", "Methods", (arr) => {
                 return (arr as List<ClassMethod>).Count > 0;
-              })
+              }
             )
           )
         );

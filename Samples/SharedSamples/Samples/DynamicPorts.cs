@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -164,7 +164,7 @@ namespace Demo.Samples.DynamicPorts {
           SelectionElementName = "BODY",
           ContextMenu = nodeMenu
         }
-          .Bind("Location", "Loc", Point.Parse, Point.Stringify)
+          .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
           .Add(
             // the body
             new Panel("Auto") {
@@ -179,7 +179,7 @@ namespace Demo.Samples.DynamicPorts {
                 new TextBlock {
                   Margin = 10, TextAlign = TextAlign.Center, Font = new Font("Segoe UI", 14, Northwoods.Go.FontWeight.Bold), Stroke = "#484848", Editable = true
                 }
-                  .Bind(new Binding("Text", "Name").MakeTwoWay())
+                  .BindTwoWay("Text", "Name")
               ),  // end panel body
 
             // left panel
@@ -203,7 +203,7 @@ namespace Demo.Samples.DynamicPorts {
           RelinkableFrom = true,
           RelinkableTo = true
         }
-          .Bind(new Binding("Points").MakeTwoWay())
+          .BindTwoWay("Points")
           .Add(new Shape { Stroke = "#2F4F4F", StrokeWidth = 2 });
 
       // support double-clicking in the background to add a copy of this data as a node

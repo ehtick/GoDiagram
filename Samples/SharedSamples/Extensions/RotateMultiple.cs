@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using Northwoods.Go;
@@ -24,8 +24,8 @@ namespace Demo.Extensions.RotateMultiple {
 
       _Diagram.NodeTemplate =
         new Node("Auto") { LocationSpot = Spot.Center, Rotatable = true }
-          .Bind("Location", "Loc", Point.Parse, Point.Stringify)
-          .Bind(new Binding("Angle").MakeTwoWay())
+          .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
+          .BindTwoWay("Angle")
           .Add(
             new Shape("RoundedRectangle") { StrokeWidth = 0 }
               .Bind("Fill", "Color"),

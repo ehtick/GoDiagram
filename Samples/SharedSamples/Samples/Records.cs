@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using Northwoods.Go;
@@ -60,7 +60,7 @@ namespace Demo.Samples.Records {
       // This template represents a whole "record"
       _Diagram.NodeTemplate =
         new Node("Auto") { Copyable = false, Deletable = false }
-          .Bind("Location", "Loc", Point.Parse, Point.Stringify)
+          .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
           .Add(
             // this rectangular shape surrounds the contents of the node
             new Shape { Fill = "#EEEEEE" },

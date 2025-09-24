@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -144,8 +144,8 @@ namespace Demo.Samples.RadialAdornment {
         }.Bind("Fill", "Color"),
         new TextBlock {
           Margin = 8, Editable = true
-        }.Bind(new Binding("Text").MakeTwoWay())
-      ).Bind("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify);
+        }.BindTwoWay("Text")
+      ).BindTwoWay("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify);
 
       myDiagram.Model = new Model {
         NodeDataSource = new List<NodeData> {

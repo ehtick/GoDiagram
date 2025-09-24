@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using Northwoods.Go;
@@ -26,7 +26,7 @@ namespace Demo.Samples.Pert {
       var bluefill = "#B3E5FC";
 
       _Diagram.InitialAutoScale = AutoScale.Uniform;
-      _Diagram.Layout = new LayeredDigraphLayout();
+      _Diagram.Layout = new LayeredDigraphLayout() { AlignOption = LayeredDigraphAlign.All };
 
       // The node template shows the activity name in the middle as well as
       // various statistics about the activity, all surrounded by a border.
@@ -138,17 +138,17 @@ namespace Demo.Samples.Pert {
       };
 
       // create an unbound Part that acts as a legend for the diagram
-      _Diagram.Add(new Node(PanelType.Auto).Add(
+      _Diagram.Add(new Node(PanelType.Auto) { LayerName = "ViewportBackground" }.Add(
         new Shape { // the border
           Figure = "Rectangle",
-          Fill = bluefill
+          Fill = "#eeeeee"
         },
         new Panel(PanelType.Table)
         .Add(
           new ColumnDefinition { Column = 1, SeparatorStroke = "black" },
           new ColumnDefinition { Column = 2, SeparatorStroke = "black" })
         .Add(
-          new RowDefinition { Row = 1, SeparatorStroke = "black", Background = bluefill, CoversSeparators = true },
+          new RowDefinition { Row = 1, SeparatorStroke = "black", Background = "#eeeeee", CoversSeparators = true },
           new RowDefinition { Row = 2, SeparatorStroke = "black" })
         .Add(
           new TextBlock {

@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -219,7 +219,7 @@ namespace Demo.Samples.Gantt {
             Builder.Make<Panel>("TreeExpanderButton")
               .Set(new { PortId = "", Scale = 0.85 }),
             new TextBlock { Editable = true }
-              .Bind(new Binding("Text").MakeTwoWay())
+              .BindTwoWay("Text")
           )
           .Apply(standardContextMenus);
 

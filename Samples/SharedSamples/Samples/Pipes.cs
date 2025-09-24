@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -245,7 +245,7 @@ namespace Demo.Samples.Pipes {
             }
               .Bind("Text")
           )
-          .Bind("Location", "Loc", Point.Parse, Point.Stringify);
+          .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify);
 
       DefineNodeTemplate();
       _Diagram.NodeTemplate = _SharedNodeTemplate;

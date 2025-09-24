@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -167,24 +167,16 @@ namespace Demo.Samples.ControlGauges {
         );
       }
 
-      object CommonNodeStyle() {
-        return new {
-          LocationSpot = Spot.Center,
-          FromSpot = Spot.BottomRightSides,
-          ToSpot = Spot.TopLeftSides
-        };
-      }
-
-      Binding CommonNodeBinding() {
-        return new Binding("Location", "Loc", Point.Parse).MakeTwoWay(Point.Stringify);
+      void nodeStyle(Node node) {
+        node.LocationSpot = Spot.Center;
+        node.FromSpot = Spot.BottomRightSides;
+        node.ToSpot = Spot.TopLeftSides;
+        node.BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify);
       }
 
       myDiagram.NodeTemplateMap.Add("Horizontal",
-        new Node(PanelType.Auto).Set(
-          CommonNodeStyle()
-        ).Bind(
-          CommonNodeBinding()
-        ).Add(
+        new Node(PanelType.Auto).Apply(nodeStyle)
+          .Add(
           new Shape { Fill = "lightgray", Stroke = "gray" },
           new Panel(PanelType.Table) { Margin = 1, Stretch = Stretch.Fill }.Add(
             // header information
@@ -249,10 +241,9 @@ namespace Demo.Samples.ControlGauges {
               Font = new Font("Segoe UI", 13, FontWeight.Bold),
               IsMultiline = false,
               Editable = true
-            }.Bind(
-              new Binding("Text", "Value", (v, _) => {
+            }.BindTwoWay("Text", "Value", (v, _) => {
                 return (v as double? ?? double.NaN).ToString();
-              }).MakeTwoWay((s, _, __) => { return double.Parse(s as string); })
+              }, (s, _, __) => { return double.Parse(s as string); }
             )
           )
         )
@@ -261,11 +252,7 @@ namespace Demo.Samples.ControlGauges {
 
 
       myDiagram.NodeTemplateMap.Add("Vertical",
-        new Node(PanelType.Auto).Set(
-          CommonNodeStyle()
-        ).Bind(
-          CommonNodeBinding()
-        ).Add(
+        new Node(PanelType.Auto).Apply(nodeStyle).Add(
           // {
           //   Resizable = true,
           //   ResizeElementName = "PATH",
@@ -353,21 +340,16 @@ namespace Demo.Samples.ControlGauges {
               Font = new Font("Segoe UI", 13, FontWeight.Bold),
               IsMultiline = false,
               Editable = true
-            }.Bind(
-              new Binding("Text", "Value", (v, _) => {
-                return (v as double? ?? double.NaN).ToString();
-              }).MakeTwoWay((s, _, __) => { return double.Parse(s as string); })
+            }.BindTwoWay("Text", "Value", (v, _) => {
+              return (v as double? ?? double.NaN).ToString();
+            }, (s, _, __) => { return double.Parse(s as string); }
             )
           )
         )
       );
 
       myDiagram.NodeTemplateMap.Add("NeedleMeter",
-        new Node(PanelType.Auto).Set(
-          CommonNodeStyle()
-        ).Bind(
-          CommonNodeBinding()
-        ).Add(
+        new Node(PanelType.Auto).Apply(nodeStyle).Add(
           new Shape {
             Fill = "darkslategray"
           },
@@ -419,22 +401,18 @@ namespace Demo.Samples.ControlGauges {
               Font = new Font("Segoe UI", 17, FontStyle.Italic, FontWeight.Bold),
               IsMultiline = false,
               Editable = true
-            }.Bind(
-              new Binding("Text", "Value", (v, _) => {
+            }
+            .BindTwoWay("Text", "Value", (v, _) => {
                 return (v as double? ?? double.NaN).ToString();
-              }).MakeTwoWay((s, _, __) => { return float.Parse(s as string); }),
-              new Binding("Stroke", "Color")
+              }, (s, _, __) => { return double.Parse(s as string); }
             )
+            .Bind("Stroke", "Color")
           )
         )
       );
 
       myDiagram.NodeTemplateMap.Add("CircularMeter",
-        new Node(PanelType.Table).Set(
-          CommonNodeStyle()
-        ).Bind(
-          CommonNodeBinding()
-        ).Add(
+        new Node(PanelType.Table).Apply(nodeStyle).Add(
           new Panel(PanelType.Auto) {
             Row = 0
           }.Add(
@@ -475,12 +453,11 @@ namespace Demo.Samples.ControlGauges {
                 Stroke = "white",
                 Font = new Font("Segoe UI", 19, FontStyle.Italic, FontWeight.Bold),
                 Editable = true
-              }.Bind(
-                new Binding("Text", "Value", (v, _) => {
+              }.BindTwoWay("Text", "Value", (v, _) => {
                   return (v as double? ?? double.NaN).ToString();
-                }).MakeTwoWay((s, _, __) => { return double.Parse(s as string); }),
-                new Binding("Stroke", "Color")
-              ),
+                }, (s, _, __) => { return double.Parse(s as string); }
+              )
+              .Bind("Stroke", "Color"),
               new Shape {
                 Fill = "red",
                 StrokeWidth = 0,
@@ -519,11 +496,7 @@ namespace Demo.Samples.ControlGauges {
       myDiagram.NodeTemplateMap.Add("BarMeter",
         new Node(PanelType.Table) {
           Scale = 0.8
-        }.Set(
-          CommonNodeStyle()
-        ).Bind(
-          CommonNodeBinding()
-        ).Add(
+        }.Apply(nodeStyle).Add(
           new Panel(PanelType.Auto) {
             Row = 0
           }.Add(
@@ -564,12 +537,12 @@ namespace Demo.Samples.ControlGauges {
                 Stroke = "white",
                 Font = new Font("Segoe UI", 19, FontStyle.Italic, FontWeight.Bold),
                 Editable = true
-              }.Bind(
-                new Binding("Text", "Value", (v, _) => {
+              }
+              .BindTwoWay("Text", "Value", (v, _) => {
                   return (v as double? ?? double.NaN).ToString();
-                }).MakeTwoWay((s, _, __) => { return double.Parse(s as string); }),
-                new Binding("Stroke", "Color")
-              ),
+                }, (s, _, __) => { return double.Parse(s as string); }
+              )
+              .Bind("Stroke", "Color"),
               new Shape {
                 Fill = "red",
                 StrokeWidth = 0

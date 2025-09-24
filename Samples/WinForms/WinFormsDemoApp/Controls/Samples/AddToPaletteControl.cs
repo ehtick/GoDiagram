@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -71,7 +71,7 @@ namespace Demo.Samples.AddToPalette {
         new Node("Auto") {
             LocationSpot = Spot.Center
           }
-          .Bind("Location", "Loc", Point.Parse, Point.Stringify)
+          .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
           .Add(
             new Shape("Circle") {
                 Fill = "white", Stroke = "gray", StrokeWidth = 2,
@@ -86,7 +86,7 @@ namespace Demo.Samples.AddToPalette {
                 MinSize = new Size(16, 16), MaxSize = new Size(120, double.NaN),
                 TextAlign = TextAlign.Center, Editable = true
               }
-              .Bind(new Binding("Text").MakeTwoWay())
+              .BindTwoWay("Text")
           );
     }
 

@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 namespace Demo.Samples.LDLayout {
   partial class LDLayout {
@@ -25,625 +25,695 @@ namespace Demo.Samples.LDLayout {
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.minNodes = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.maxNodes = new System.Windows.Forms.TextBox();
-            this.generateBtn = new System.Windows.Forms.Button();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.direction = new System.Windows.Forms.FlowLayoutPanel();
-            this.right = new System.Windows.Forms.RadioButton();
-            this.down = new System.Windows.Forms.RadioButton();
-            this.left = new System.Windows.Forms.RadioButton();
-            this.up = new System.Windows.Forms.RadioButton();
-            this.label6 = new System.Windows.Forms.Label();
-            this.layerSpacing = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.columnSpacing = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.cycleRemove = new System.Windows.Forms.FlowLayoutPanel();
-            this.depthFirst = new System.Windows.Forms.RadioButton();
-            this.greedy = new System.Windows.Forms.RadioButton();
-            this.label9 = new System.Windows.Forms.Label();
-            this.layering = new System.Windows.Forms.FlowLayoutPanel();
-            this.optimalLinkLength = new System.Windows.Forms.RadioButton();
-            this.longestPathSource = new System.Windows.Forms.RadioButton();
-            this.longestPathSink = new System.Windows.Forms.RadioButton();
-            this.label10 = new System.Windows.Forms.Label();
-            this.initialize = new System.Windows.Forms.FlowLayoutPanel();
-            this.depthFirstOut = new System.Windows.Forms.RadioButton();
-            this.depthFirstIn = new System.Windows.Forms.RadioButton();
-            this.naive = new System.Windows.Forms.RadioButton();
-            this.label11 = new System.Windows.Forms.Label();
-            this.aggressive = new System.Windows.Forms.FlowLayoutPanel();
-            this.none = new System.Windows.Forms.RadioButton();
-            this.less = new System.Windows.Forms.RadioButton();
-            this.more = new System.Windows.Forms.RadioButton();
-            this.label12 = new System.Windows.Forms.Label();
-            this.median = new System.Windows.Forms.CheckBox();
-            this.straighten = new System.Windows.Forms.CheckBox();
-            this.expand = new System.Windows.Forms.CheckBox();
-            this.setsPortSpots = new System.Windows.Forms.CheckBox();
-            this.diagramControl1 = new Northwoods.Go.WinForms.DiagramControl();
-            this.desc1 = new WinFormsDemoApp.GoWebBrowser();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
-            this.flowLayoutPanel3.SuspendLayout();
-            this.direction.SuspendLayout();
-            this.cycleRemove.SuspendLayout();
-            this.layering.SuspendLayout();
-            this.initialize.SuspendLayout();
-            this.aggressive.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.desc1)).BeginInit();
-            this.SuspendLayout();
-            //
-            // tableLayoutPanel1
-            //
-            this.tableLayoutPanel1.AutoScroll = true;
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.diagramControl1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.desc1, 0, 2);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1000, 923);
-            this.tableLayoutPanel1.TabIndex = 0;
-            //
-            // flowLayoutPanel1
-            //
-            this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.AliceBlue;
-            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel2);
-            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel3);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel1.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(994, 304);
-            this.flowLayoutPanel1.TabIndex = 4;
-            //
-            // flowLayoutPanel2
-            //
-            this.flowLayoutPanel2.AutoSize = true;
-            this.flowLayoutPanel2.Controls.Add(this.label1);
-            this.flowLayoutPanel2.Controls.Add(this.label2);
-            this.flowLayoutPanel2.Controls.Add(this.minNodes);
-            this.flowLayoutPanel2.Controls.Add(this.label3);
-            this.flowLayoutPanel2.Controls.Add(this.maxNodes);
-            this.flowLayoutPanel2.Controls.Add(this.generateBtn);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(191, 112);
-            this.flowLayoutPanel2.TabIndex = 0;
-            //
-            // label1
-            //
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label1.AutoSize = true;
-            this.flowLayoutPanel2.SetFlowBreak(this.label1, true);
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "New Graph";
-            //
-            // label2
-            //
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 24);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 17);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Min Nodes:";
-            //
-            // minNodes
-            //
-            this.flowLayoutPanel2.SetFlowBreak(this.minNodes, true);
-            this.minNodes.Location = new System.Drawing.Point(85, 20);
-            this.minNodes.Name = "minNodes";
-            this.minNodes.Size = new System.Drawing.Size(100, 25);
-            this.minNodes.TabIndex = 2;
-            this.minNodes.Text = "20";
-            //
-            // label3
-            //
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 55);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 17);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Max Nodes:";
-            //
-            // maxNodes
-            //
-            this.flowLayoutPanel2.SetFlowBreak(this.maxNodes, true);
-            this.maxNodes.Location = new System.Drawing.Point(88, 51);
-            this.maxNodes.Name = "maxNodes";
-            this.maxNodes.Size = new System.Drawing.Size(100, 25);
-            this.maxNodes.TabIndex = 4;
-            this.maxNodes.Text = "100";
-            //
-            // generateBtn
-            //
-            this.generateBtn.AutoSize = true;
-            this.generateBtn.Location = new System.Drawing.Point(3, 82);
-            this.generateBtn.Name = "generateBtn";
-            this.generateBtn.Size = new System.Drawing.Size(122, 27);
-            this.generateBtn.TabIndex = 5;
-            this.generateBtn.Text = "Generate Digraph";
-            this.generateBtn.UseVisualStyleBackColor = true;
-            //
-            // flowLayoutPanel3
-            //
-            this.flowLayoutPanel3.AutoSize = true;
-            this.flowLayoutPanel3.Controls.Add(this.label4);
-            this.flowLayoutPanel3.Controls.Add(this.label5);
-            this.flowLayoutPanel3.Controls.Add(this.direction);
-            this.flowLayoutPanel3.Controls.Add(this.label6);
-            this.flowLayoutPanel3.Controls.Add(this.layerSpacing);
-            this.flowLayoutPanel3.Controls.Add(this.label7);
-            this.flowLayoutPanel3.Controls.Add(this.columnSpacing);
-            this.flowLayoutPanel3.Controls.Add(this.label8);
-            this.flowLayoutPanel3.Controls.Add(this.cycleRemove);
-            this.flowLayoutPanel3.Controls.Add(this.label9);
-            this.flowLayoutPanel3.Controls.Add(this.layering);
-            this.flowLayoutPanel3.Controls.Add(this.label10);
-            this.flowLayoutPanel3.Controls.Add(this.initialize);
-            this.flowLayoutPanel3.Controls.Add(this.label11);
-            this.flowLayoutPanel3.Controls.Add(this.aggressive);
-            this.flowLayoutPanel3.Controls.Add(this.label12);
-            this.flowLayoutPanel3.Controls.Add(this.median);
-            this.flowLayoutPanel3.Controls.Add(this.straighten);
-            this.flowLayoutPanel3.Controls.Add(this.expand);
-            this.flowLayoutPanel3.Controls.Add(this.setsPortSpots);
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(200, 3);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(480, 298);
-            this.flowLayoutPanel3.TabIndex = 1;
-            //
-            // label4
-            //
-            this.label4.AutoSize = true;
-            this.flowLayoutPanel3.SetFlowBreak(this.label4, true);
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.label4.Location = new System.Drawing.Point(3, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(215, 17);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "LayeredDigraphLayout Properties";
-            //
-            // label5
-            //
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 25);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 17);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Direction:";
-            //
-            // direction
-            //
-            this.direction.AutoSize = true;
-            this.direction.Controls.Add(this.right);
-            this.direction.Controls.Add(this.down);
-            this.direction.Controls.Add(this.left);
-            this.direction.Controls.Add(this.up);
-            this.flowLayoutPanel3.SetFlowBreak(this.direction, true);
-            this.direction.Location = new System.Drawing.Point(72, 20);
-            this.direction.Name = "direction";
-            this.direction.Size = new System.Drawing.Size(340, 27);
-            this.direction.TabIndex = 2;
-            //
-            // right
-            //
-            this.right.AutoSize = true;
-            this.right.Checked = true;
-            this.right.Location = new System.Drawing.Point(3, 3);
-            this.right.Name = "right";
-            this.right.Size = new System.Drawing.Size(75, 21);
-            this.right.TabIndex = 0;
-            this.right.TabStop = true;
-            this.right.Text = "Right (0)";
-            this.right.UseVisualStyleBackColor = true;
-            //
-            // down
-            //
-            this.down.AutoSize = true;
-            this.down.Location = new System.Drawing.Point(84, 3);
-            this.down.Name = "down";
-            this.down.Size = new System.Drawing.Size(85, 21);
-            this.down.TabIndex = 1;
-            this.down.Text = "Down (90)";
-            this.down.UseVisualStyleBackColor = true;
-            //
-            // left
-            //
-            this.left.AutoSize = true;
-            this.left.Location = new System.Drawing.Point(175, 3);
-            this.left.Name = "left";
-            this.left.Size = new System.Drawing.Size(80, 21);
-            this.left.TabIndex = 2;
-            this.left.Text = "Left (180)";
-            this.left.UseVisualStyleBackColor = true;
-            //
-            // up
-            //
-            this.up.AutoSize = true;
-            this.up.Location = new System.Drawing.Point(261, 3);
-            this.up.Name = "up";
-            this.up.Size = new System.Drawing.Size(76, 21);
-            this.up.TabIndex = 3;
-            this.up.Text = "Up (270)";
-            this.up.UseVisualStyleBackColor = true;
-            //
-            // label6
-            //
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 57);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(88, 17);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "LayerSpacing:";
-            //
-            // layerSpacing
-            //
-            this.flowLayoutPanel3.SetFlowBreak(this.layerSpacing, true);
-            this.layerSpacing.Location = new System.Drawing.Point(97, 53);
-            this.layerSpacing.Name = "layerSpacing";
-            this.layerSpacing.Size = new System.Drawing.Size(100, 25);
-            this.layerSpacing.TabIndex = 4;
-            this.layerSpacing.Text = "25";
-            //
-            // label7
-            //
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 88);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(101, 17);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "ColumnSpacing:";
-            //
-            // columnSpacing
-            //
-            this.flowLayoutPanel3.SetFlowBreak(this.columnSpacing, true);
-            this.columnSpacing.Location = new System.Drawing.Point(110, 84);
-            this.columnSpacing.Name = "columnSpacing";
-            this.columnSpacing.Size = new System.Drawing.Size(100, 25);
-            this.columnSpacing.TabIndex = 6;
-            this.columnSpacing.Text = "25";
-            //
-            // label8
-            //
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 120);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(88, 17);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "CycleRemove:";
-            //
-            // cycleRemove
-            //
-            this.cycleRemove.AutoSize = true;
-            this.cycleRemove.Controls.Add(this.depthFirst);
-            this.cycleRemove.Controls.Add(this.greedy);
-            this.flowLayoutPanel3.SetFlowBreak(this.cycleRemove, true);
-            this.cycleRemove.Location = new System.Drawing.Point(97, 115);
-            this.cycleRemove.Name = "cycleRemove";
-            this.cycleRemove.Size = new System.Drawing.Size(165, 27);
-            this.cycleRemove.TabIndex = 8;
-            //
-            // depthFirst
-            //
-            this.depthFirst.AutoSize = true;
-            this.depthFirst.Checked = true;
-            this.depthFirst.Location = new System.Drawing.Point(3, 3);
-            this.depthFirst.Name = "depthFirst";
-            this.depthFirst.Size = new System.Drawing.Size(85, 21);
-            this.depthFirst.TabIndex = 0;
-            this.depthFirst.TabStop = true;
-            this.depthFirst.Text = "DepthFirst";
-            this.depthFirst.UseVisualStyleBackColor = true;
-            //
-            // greedy
-            //
-            this.greedy.AutoSize = true;
-            this.greedy.Location = new System.Drawing.Point(94, 3);
-            this.greedy.Name = "greedy";
-            this.greedy.Size = new System.Drawing.Size(68, 21);
-            this.greedy.TabIndex = 1;
-            this.greedy.Text = "Greedy";
-            this.greedy.UseVisualStyleBackColor = true;
-            //
-            // label9
-            //
-            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 153);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(60, 17);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "Layering:";
-            //
-            // layering
-            //
-            this.layering.AutoSize = true;
-            this.layering.Controls.Add(this.optimalLinkLength);
-            this.layering.Controls.Add(this.longestPathSource);
-            this.layering.Controls.Add(this.longestPathSink);
-            this.flowLayoutPanel3.SetFlowBreak(this.layering, true);
-            this.layering.Location = new System.Drawing.Point(69, 148);
-            this.layering.Name = "layering";
-            this.layering.Size = new System.Drawing.Size(408, 27);
-            this.layering.TabIndex = 10;
-            //
-            // optimalLinkLength
-            //
-            this.optimalLinkLength.AutoSize = true;
-            this.optimalLinkLength.Checked = true;
-            this.optimalLinkLength.Location = new System.Drawing.Point(3, 3);
-            this.optimalLinkLength.Name = "optimalLinkLength";
-            this.optimalLinkLength.Size = new System.Drawing.Size(133, 21);
-            this.optimalLinkLength.TabIndex = 0;
-            this.optimalLinkLength.TabStop = true;
-            this.optimalLinkLength.Text = "OptimalLinkLength";
-            this.optimalLinkLength.UseVisualStyleBackColor = true;
-            //
-            // longestPathSource
-            //
-            this.longestPathSource.AutoSize = true;
-            this.longestPathSource.Location = new System.Drawing.Point(142, 3);
-            this.longestPathSource.Name = "longestPathSource";
-            this.longestPathSource.Size = new System.Drawing.Size(137, 21);
-            this.longestPathSource.TabIndex = 1;
-            this.longestPathSource.Text = "LongestPathSource";
-            this.longestPathSource.UseVisualStyleBackColor = true;
-            //
-            // longestPathSink
-            //
-            this.longestPathSink.AutoSize = true;
-            this.longestPathSink.Location = new System.Drawing.Point(285, 3);
-            this.longestPathSink.Name = "longestPathSink";
-            this.longestPathSink.Size = new System.Drawing.Size(120, 21);
-            this.longestPathSink.TabIndex = 2;
-            this.longestPathSink.Text = "LongestPathSink";
-            this.longestPathSink.UseVisualStyleBackColor = true;
-            //
-            // label10
-            //
-            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 186);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(57, 17);
-            this.label10.TabIndex = 11;
-            this.label10.Text = "Initialize:";
-            //
-            // initialize
-            //
-            this.initialize.AutoSize = true;
-            this.initialize.Controls.Add(this.depthFirstOut);
-            this.initialize.Controls.Add(this.depthFirstIn);
-            this.initialize.Controls.Add(this.naive);
-            this.flowLayoutPanel3.SetFlowBreak(this.initialize, true);
-            this.initialize.Location = new System.Drawing.Point(66, 181);
-            this.initialize.Name = "initialize";
-            this.initialize.Size = new System.Drawing.Size(278, 27);
-            this.initialize.TabIndex = 12;
-            //
-            // depthFirstOut
-            //
-            this.depthFirstOut.AutoSize = true;
-            this.depthFirstOut.Checked = true;
-            this.depthFirstOut.Location = new System.Drawing.Point(3, 3);
-            this.depthFirstOut.Name = "depthFirstOut";
-            this.depthFirstOut.Size = new System.Drawing.Size(106, 21);
-            this.depthFirstOut.TabIndex = 0;
-            this.depthFirstOut.TabStop = true;
-            this.depthFirstOut.Text = "DepthFirstOut";
-            this.depthFirstOut.UseVisualStyleBackColor = true;
-            //
-            // depthFirstIn
-            //
-            this.depthFirstIn.AutoSize = true;
-            this.depthFirstIn.Location = new System.Drawing.Point(115, 3);
-            this.depthFirstIn.Name = "depthFirstIn";
-            this.depthFirstIn.Size = new System.Drawing.Size(95, 21);
-            this.depthFirstIn.TabIndex = 1;
-            this.depthFirstIn.Text = "DepthFirstIn";
-            this.depthFirstIn.UseVisualStyleBackColor = true;
-            //
-            // naive
-            //
-            this.naive.AutoSize = true;
-            this.naive.Location = new System.Drawing.Point(216, 3);
-            this.naive.Name = "naive";
-            this.naive.Size = new System.Drawing.Size(59, 21);
-            this.naive.TabIndex = 2;
-            this.naive.Text = "Naive";
-            this.naive.UseVisualStyleBackColor = true;
-            //
-            // label11
-            //
-            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(3, 219);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(75, 17);
-            this.label11.TabIndex = 13;
-            this.label11.Text = "Aggressive:";
-            //
-            // aggressive
-            //
-            this.aggressive.AutoSize = true;
-            this.aggressive.Controls.Add(this.none);
-            this.aggressive.Controls.Add(this.less);
-            this.aggressive.Controls.Add(this.more);
-            this.flowLayoutPanel3.SetFlowBreak(this.aggressive, true);
-            this.aggressive.Location = new System.Drawing.Point(84, 214);
-            this.aggressive.Name = "aggressive";
-            this.aggressive.Size = new System.Drawing.Size(185, 27);
-            this.aggressive.TabIndex = 14;
-            //
-            // none
-            //
-            this.none.AutoSize = true;
-            this.none.Location = new System.Drawing.Point(3, 3);
-            this.none.Name = "none";
-            this.none.Size = new System.Drawing.Size(58, 21);
-            this.none.TabIndex = 0;
-            this.none.Text = "None";
-            this.none.UseVisualStyleBackColor = true;
-            //
-            // less
-            //
-            this.less.AutoSize = true;
-            this.less.Checked = true;
-            this.less.Location = new System.Drawing.Point(67, 3);
-            this.less.Name = "less";
-            this.less.Size = new System.Drawing.Size(51, 21);
-            this.less.TabIndex = 1;
-            this.less.TabStop = true;
-            this.less.Text = "Less";
-            this.less.UseVisualStyleBackColor = true;
-            //
-            // more
-            //
-            this.more.AutoSize = true;
-            this.more.Location = new System.Drawing.Point(124, 3);
-            this.more.Name = "more";
-            this.more.Size = new System.Drawing.Size(58, 21);
-            this.more.TabIndex = 2;
-            this.more.Text = "More";
-            this.more.UseVisualStyleBackColor = true;
-            //
-            // label12
-            //
-            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(3, 249);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(37, 17);
-            this.label12.TabIndex = 15;
-            this.label12.Text = "Pack:";
-            //
-            // median
-            //
-            this.median.AutoSize = true;
-            this.median.Checked = true;
-            this.median.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.median.Location = new System.Drawing.Point(46, 247);
-            this.median.Name = "median";
-            this.median.Size = new System.Drawing.Size(71, 21);
-            this.median.TabIndex = 16;
-            this.median.Text = "Median";
-            this.median.UseVisualStyleBackColor = true;
-            //
-            // straighten
-            //
-            this.straighten.AutoSize = true;
-            this.straighten.Checked = true;
-            this.straighten.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.straighten.Location = new System.Drawing.Point(123, 247);
-            this.straighten.Name = "straighten";
-            this.straighten.Size = new System.Drawing.Size(86, 21);
-            this.straighten.TabIndex = 17;
-            this.straighten.Text = "Straighten";
-            this.straighten.UseVisualStyleBackColor = true;
-            //
-            // expand
-            //
-            this.expand.AutoSize = true;
-            this.expand.Checked = true;
-            this.expand.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.flowLayoutPanel3.SetFlowBreak(this.expand, true);
-            this.expand.Location = new System.Drawing.Point(215, 247);
-            this.expand.Name = "expand";
-            this.expand.Size = new System.Drawing.Size(70, 21);
-            this.expand.TabIndex = 18;
-            this.expand.Text = "Expand";
-            this.expand.UseVisualStyleBackColor = true;
-            //
-            // setsPortSpots
-            //
-            this.setsPortSpots.AutoSize = true;
-            this.setsPortSpots.Checked = true;
-            this.setsPortSpots.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.setsPortSpots.Location = new System.Drawing.Point(3, 274);
-            this.setsPortSpots.Name = "setsPortSpots";
-            this.setsPortSpots.Size = new System.Drawing.Size(108, 21);
-            this.setsPortSpots.TabIndex = 19;
-            this.setsPortSpots.Text = "SetsPortSpots";
-            this.setsPortSpots.UseVisualStyleBackColor = true;
-            //
-            // diagramControl1
-            //
-            this.diagramControl1.AllowDrop = true;
-            this.diagramControl1.BackColor = System.Drawing.Color.White;
-            this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.diagramControl1.Location = new System.Drawing.Point(4, 313);
-            this.diagramControl1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.diagramControl1.Name = "diagramControl1";
-            this.diagramControl1.Size = new System.Drawing.Size(992, 494);
-            this.diagramControl1.TabIndex = 2;
-            //
-            // desc1
-            //
-            this.desc1.CreationProperties = null;
-            this.desc1.DefaultBackgroundColor = System.Drawing.Color.White;
-            this.desc1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.desc1.Location = new System.Drawing.Point(3, 813);
-            this.desc1.Name = "desc1";
-            this.desc1.Size = new System.Drawing.Size(994, 60);
-            this.desc1.TabIndex = 3;
-            this.desc1.ZoomFactor = 1D;
-            //
-            // LayeredDigraphControl
-            //
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "LayeredDigraphControl";
-            this.Size = new System.Drawing.Size(1000, 923);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
-            this.flowLayoutPanel3.ResumeLayout(false);
-            this.flowLayoutPanel3.PerformLayout();
-            this.direction.ResumeLayout(false);
-            this.direction.PerformLayout();
-            this.cycleRemove.ResumeLayout(false);
-            this.cycleRemove.PerformLayout();
-            this.layering.ResumeLayout(false);
-            this.layering.PerformLayout();
-            this.initialize.ResumeLayout(false);
-            this.initialize.PerformLayout();
-            this.aggressive.ResumeLayout(false);
-            this.aggressive.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.desc1)).EndInit();
-            this.ResumeLayout(false);
+      tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+      flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+      flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+      label1 = new System.Windows.Forms.Label();
+      label2 = new System.Windows.Forms.Label();
+      minNodes = new System.Windows.Forms.TextBox();
+      label3 = new System.Windows.Forms.Label();
+      maxNodes = new System.Windows.Forms.TextBox();
+      generateBtn = new System.Windows.Forms.Button();
+      flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+      label4 = new System.Windows.Forms.Label();
+      label5 = new System.Windows.Forms.Label();
+      direction = new System.Windows.Forms.FlowLayoutPanel();
+      right = new System.Windows.Forms.RadioButton();
+      down = new System.Windows.Forms.RadioButton();
+      left = new System.Windows.Forms.RadioButton();
+      up = new System.Windows.Forms.RadioButton();
+      label6 = new System.Windows.Forms.Label();
+      layerSpacing = new System.Windows.Forms.TextBox();
+      label7 = new System.Windows.Forms.Label();
+      columnSpacing = new System.Windows.Forms.TextBox();
+      label8 = new System.Windows.Forms.Label();
+      cycleRemove = new System.Windows.Forms.FlowLayoutPanel();
+      depthFirst = new System.Windows.Forms.RadioButton();
+      greedy = new System.Windows.Forms.RadioButton();
+      label9 = new System.Windows.Forms.Label();
+      layering = new System.Windows.Forms.FlowLayoutPanel();
+      optimalLinkLength = new System.Windows.Forms.RadioButton();
+      longestPathSource = new System.Windows.Forms.RadioButton();
+      longestPathSink = new System.Windows.Forms.RadioButton();
+      label10 = new System.Windows.Forms.Label();
+      initialize = new System.Windows.Forms.FlowLayoutPanel();
+      depthFirstOut = new System.Windows.Forms.RadioButton();
+      depthFirstIn = new System.Windows.Forms.RadioButton();
+      naive = new System.Windows.Forms.RadioButton();
+      label11 = new System.Windows.Forms.Label();
+      aggressive = new System.Windows.Forms.FlowLayoutPanel();
+      none = new System.Windows.Forms.RadioButton();
+      less = new System.Windows.Forms.RadioButton();
+      more = new System.Windows.Forms.RadioButton();
+      label12 = new System.Windows.Forms.Label();
+      median = new System.Windows.Forms.CheckBox();
+      straighten = new System.Windows.Forms.CheckBox();
+      expand = new System.Windows.Forms.CheckBox();
+      label13 = new System.Windows.Forms.Label();
+      upperLeft = new System.Windows.Forms.CheckBox();
+      upperRight = new System.Windows.Forms.CheckBox();
+      lowerLeft = new System.Windows.Forms.CheckBox();
+      lowerRight = new System.Windows.Forms.CheckBox();
+      setsPortSpots = new System.Windows.Forms.CheckBox();
+      diagramControl1 = new Northwoods.Go.WinForms.DiagramControl();
+      desc1 = new WinFormsDemoApp.GoWebBrowser();
+      tableLayoutPanel1.SuspendLayout();
+      flowLayoutPanel1.SuspendLayout();
+      flowLayoutPanel2.SuspendLayout();
+      flowLayoutPanel3.SuspendLayout();
+      direction.SuspendLayout();
+      cycleRemove.SuspendLayout();
+      layering.SuspendLayout();
+      initialize.SuspendLayout();
+      aggressive.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)desc1).BeginInit();
+      SuspendLayout();
+      // 
+      // tableLayoutPanel1
+      // 
+      tableLayoutPanel1.AutoScroll = true;
+      tableLayoutPanel1.ColumnCount = 1;
+      tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      tableLayoutPanel1.Controls.Add(flowLayoutPanel1, 0, 0);
+      tableLayoutPanel1.Controls.Add(diagramControl1, 0, 1);
+      tableLayoutPanel1.Controls.Add(desc1, 0, 2);
+      tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
+      tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+      tableLayoutPanel1.Name = "tableLayoutPanel1";
+      tableLayoutPanel1.RowCount = 3;
+      tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      tableLayoutPanel1.Size = new System.Drawing.Size(1000, 923);
+      tableLayoutPanel1.TabIndex = 0;
+      // 
+      // flowLayoutPanel1
+      // 
+      flowLayoutPanel1.AutoSize = true;
+      flowLayoutPanel1.BackColor = System.Drawing.Color.AliceBlue;
+      flowLayoutPanel1.Controls.Add(flowLayoutPanel2);
+      flowLayoutPanel1.Controls.Add(flowLayoutPanel3);
+      flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+      flowLayoutPanel1.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+      flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+      flowLayoutPanel1.Name = "flowLayoutPanel1";
+      flowLayoutPanel1.Size = new System.Drawing.Size(994, 331);
+      flowLayoutPanel1.TabIndex = 4;
+      // 
+      // flowLayoutPanel2
+      // 
+      flowLayoutPanel2.AutoSize = true;
+      flowLayoutPanel2.Controls.Add(label1);
+      flowLayoutPanel2.Controls.Add(label2);
+      flowLayoutPanel2.Controls.Add(minNodes);
+      flowLayoutPanel2.Controls.Add(label3);
+      flowLayoutPanel2.Controls.Add(maxNodes);
+      flowLayoutPanel2.Controls.Add(generateBtn);
+      flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+      flowLayoutPanel2.Name = "flowLayoutPanel2";
+      flowLayoutPanel2.Size = new System.Drawing.Size(191, 112);
+      flowLayoutPanel2.TabIndex = 0;
+      // 
+      // label1
+      // 
+      label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      label1.AutoSize = true;
+      flowLayoutPanel2.SetFlowBreak(label1, true);
+      label1.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+      label1.Location = new System.Drawing.Point(3, 0);
+      label1.Name = "label1";
+      label1.Size = new System.Drawing.Size(76, 17);
+      label1.TabIndex = 0;
+      label1.Text = "New Graph";
+      // 
+      // label2
+      // 
+      label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      label2.AutoSize = true;
+      label2.Location = new System.Drawing.Point(3, 24);
+      label2.Name = "label2";
+      label2.Size = new System.Drawing.Size(76, 17);
+      label2.TabIndex = 1;
+      label2.Text = "Min Nodes:";
+      // 
+      // minNodes
+      // 
+      flowLayoutPanel2.SetFlowBreak(minNodes, true);
+      minNodes.Location = new System.Drawing.Point(85, 20);
+      minNodes.Name = "minNodes";
+      minNodes.Size = new System.Drawing.Size(100, 25);
+      minNodes.TabIndex = 2;
+      minNodes.Text = "20";
+      // 
+      // label3
+      // 
+      label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      label3.AutoSize = true;
+      label3.Location = new System.Drawing.Point(3, 55);
+      label3.Name = "label3";
+      label3.Size = new System.Drawing.Size(79, 17);
+      label3.TabIndex = 3;
+      label3.Text = "Max Nodes:";
+      // 
+      // maxNodes
+      // 
+      flowLayoutPanel2.SetFlowBreak(maxNodes, true);
+      maxNodes.Location = new System.Drawing.Point(88, 51);
+      maxNodes.Name = "maxNodes";
+      maxNodes.Size = new System.Drawing.Size(100, 25);
+      maxNodes.TabIndex = 4;
+      maxNodes.Text = "100";
+      // 
+      // generateBtn
+      // 
+      generateBtn.AutoSize = true;
+      generateBtn.Location = new System.Drawing.Point(3, 82);
+      generateBtn.Name = "generateBtn";
+      generateBtn.Size = new System.Drawing.Size(122, 27);
+      generateBtn.TabIndex = 5;
+      generateBtn.Text = "Generate Digraph";
+      generateBtn.UseVisualStyleBackColor = true;
+      // 
+      // flowLayoutPanel3
+      // 
+      flowLayoutPanel3.AutoSize = true;
+      flowLayoutPanel3.Controls.Add(label4);
+      flowLayoutPanel3.Controls.Add(label5);
+      flowLayoutPanel3.Controls.Add(direction);
+      flowLayoutPanel3.Controls.Add(label6);
+      flowLayoutPanel3.Controls.Add(layerSpacing);
+      flowLayoutPanel3.Controls.Add(label7);
+      flowLayoutPanel3.Controls.Add(columnSpacing);
+      flowLayoutPanel3.Controls.Add(label8);
+      flowLayoutPanel3.Controls.Add(cycleRemove);
+      flowLayoutPanel3.Controls.Add(label9);
+      flowLayoutPanel3.Controls.Add(layering);
+      flowLayoutPanel3.Controls.Add(label10);
+      flowLayoutPanel3.Controls.Add(initialize);
+      flowLayoutPanel3.Controls.Add(label11);
+      flowLayoutPanel3.Controls.Add(aggressive);
+      flowLayoutPanel3.Controls.Add(label12);
+      flowLayoutPanel3.Controls.Add(median);
+      flowLayoutPanel3.Controls.Add(straighten);
+      flowLayoutPanel3.Controls.Add(expand);
+      flowLayoutPanel3.Controls.Add(label13);
+      flowLayoutPanel3.Controls.Add(upperLeft);
+      flowLayoutPanel3.Controls.Add(upperRight);
+      flowLayoutPanel3.Controls.Add(lowerLeft);
+      flowLayoutPanel3.Controls.Add(lowerRight);
+      flowLayoutPanel3.Controls.Add(setsPortSpots);
+      flowLayoutPanel3.Location = new System.Drawing.Point(200, 3);
+      flowLayoutPanel3.Name = "flowLayoutPanel3";
+      flowLayoutPanel3.Size = new System.Drawing.Size(480, 325);
+      flowLayoutPanel3.TabIndex = 1;
+      // 
+      // label4
+      // 
+      label4.AutoSize = true;
+      flowLayoutPanel3.SetFlowBreak(label4, true);
+      label4.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+      label4.Location = new System.Drawing.Point(3, 0);
+      label4.Name = "label4";
+      label4.Size = new System.Drawing.Size(215, 17);
+      label4.TabIndex = 0;
+      label4.Text = "LayeredDigraphLayout Properties";
+      // 
+      // label5
+      // 
+      label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      label5.AutoSize = true;
+      label5.Location = new System.Drawing.Point(3, 25);
+      label5.Name = "label5";
+      label5.Size = new System.Drawing.Size(63, 17);
+      label5.TabIndex = 1;
+      label5.Text = "Direction:";
+      // 
+      // direction
+      // 
+      direction.AutoSize = true;
+      direction.Controls.Add(right);
+      direction.Controls.Add(down);
+      direction.Controls.Add(left);
+      direction.Controls.Add(up);
+      flowLayoutPanel3.SetFlowBreak(direction, true);
+      direction.Location = new System.Drawing.Point(72, 20);
+      direction.Name = "direction";
+      direction.Size = new System.Drawing.Size(340, 27);
+      direction.TabIndex = 2;
+      // 
+      // right
+      // 
+      right.AutoSize = true;
+      right.Checked = true;
+      right.Location = new System.Drawing.Point(3, 3);
+      right.Name = "right";
+      right.Size = new System.Drawing.Size(75, 21);
+      right.TabIndex = 0;
+      right.TabStop = true;
+      right.Text = "Right (0)";
+      right.UseVisualStyleBackColor = true;
+      // 
+      // down
+      // 
+      down.AutoSize = true;
+      down.Location = new System.Drawing.Point(84, 3);
+      down.Name = "down";
+      down.Size = new System.Drawing.Size(85, 21);
+      down.TabIndex = 1;
+      down.Text = "Down (90)";
+      down.UseVisualStyleBackColor = true;
+      // 
+      // left
+      // 
+      left.AutoSize = true;
+      left.Location = new System.Drawing.Point(175, 3);
+      left.Name = "left";
+      left.Size = new System.Drawing.Size(80, 21);
+      left.TabIndex = 2;
+      left.Text = "Left (180)";
+      left.UseVisualStyleBackColor = true;
+      // 
+      // up
+      // 
+      up.AutoSize = true;
+      up.Location = new System.Drawing.Point(261, 3);
+      up.Name = "up";
+      up.Size = new System.Drawing.Size(76, 21);
+      up.TabIndex = 3;
+      up.Text = "Up (270)";
+      up.UseVisualStyleBackColor = true;
+      // 
+      // label6
+      // 
+      label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      label6.AutoSize = true;
+      label6.Location = new System.Drawing.Point(3, 57);
+      label6.Name = "label6";
+      label6.Size = new System.Drawing.Size(88, 17);
+      label6.TabIndex = 3;
+      label6.Text = "LayerSpacing:";
+      // 
+      // layerSpacing
+      // 
+      flowLayoutPanel3.SetFlowBreak(layerSpacing, true);
+      layerSpacing.Location = new System.Drawing.Point(97, 53);
+      layerSpacing.Name = "layerSpacing";
+      layerSpacing.Size = new System.Drawing.Size(100, 25);
+      layerSpacing.TabIndex = 4;
+      layerSpacing.Text = "25";
+      // 
+      // label7
+      // 
+      label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      label7.AutoSize = true;
+      label7.Location = new System.Drawing.Point(3, 88);
+      label7.Name = "label7";
+      label7.Size = new System.Drawing.Size(101, 17);
+      label7.TabIndex = 5;
+      label7.Text = "ColumnSpacing:";
+      // 
+      // columnSpacing
+      // 
+      flowLayoutPanel3.SetFlowBreak(columnSpacing, true);
+      columnSpacing.Location = new System.Drawing.Point(110, 84);
+      columnSpacing.Name = "columnSpacing";
+      columnSpacing.Size = new System.Drawing.Size(100, 25);
+      columnSpacing.TabIndex = 6;
+      columnSpacing.Text = "25";
+      // 
+      // label8
+      // 
+      label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      label8.AutoSize = true;
+      label8.Location = new System.Drawing.Point(3, 120);
+      label8.Name = "label8";
+      label8.Size = new System.Drawing.Size(88, 17);
+      label8.TabIndex = 7;
+      label8.Text = "CycleRemove:";
+      // 
+      // cycleRemove
+      // 
+      cycleRemove.AutoSize = true;
+      cycleRemove.Controls.Add(depthFirst);
+      cycleRemove.Controls.Add(greedy);
+      flowLayoutPanel3.SetFlowBreak(cycleRemove, true);
+      cycleRemove.Location = new System.Drawing.Point(97, 115);
+      cycleRemove.Name = "cycleRemove";
+      cycleRemove.Size = new System.Drawing.Size(165, 27);
+      cycleRemove.TabIndex = 8;
+      // 
+      // depthFirst
+      // 
+      depthFirst.AutoSize = true;
+      depthFirst.Checked = true;
+      depthFirst.Location = new System.Drawing.Point(3, 3);
+      depthFirst.Name = "depthFirst";
+      depthFirst.Size = new System.Drawing.Size(85, 21);
+      depthFirst.TabIndex = 0;
+      depthFirst.TabStop = true;
+      depthFirst.Text = "DepthFirst";
+      depthFirst.UseVisualStyleBackColor = true;
+      // 
+      // greedy
+      // 
+      greedy.AutoSize = true;
+      greedy.Location = new System.Drawing.Point(94, 3);
+      greedy.Name = "greedy";
+      greedy.Size = new System.Drawing.Size(68, 21);
+      greedy.TabIndex = 1;
+      greedy.Text = "Greedy";
+      greedy.UseVisualStyleBackColor = true;
+      // 
+      // label9
+      // 
+      label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      label9.AutoSize = true;
+      label9.Location = new System.Drawing.Point(3, 153);
+      label9.Name = "label9";
+      label9.Size = new System.Drawing.Size(60, 17);
+      label9.TabIndex = 9;
+      label9.Text = "Layering:";
+      // 
+      // layering
+      // 
+      layering.AutoSize = true;
+      layering.Controls.Add(optimalLinkLength);
+      layering.Controls.Add(longestPathSource);
+      layering.Controls.Add(longestPathSink);
+      flowLayoutPanel3.SetFlowBreak(layering, true);
+      layering.Location = new System.Drawing.Point(69, 148);
+      layering.Name = "layering";
+      layering.Size = new System.Drawing.Size(408, 27);
+      layering.TabIndex = 10;
+      // 
+      // optimalLinkLength
+      // 
+      optimalLinkLength.AutoSize = true;
+      optimalLinkLength.Checked = true;
+      optimalLinkLength.Location = new System.Drawing.Point(3, 3);
+      optimalLinkLength.Name = "optimalLinkLength";
+      optimalLinkLength.Size = new System.Drawing.Size(133, 21);
+      optimalLinkLength.TabIndex = 0;
+      optimalLinkLength.TabStop = true;
+      optimalLinkLength.Text = "OptimalLinkLength";
+      optimalLinkLength.UseVisualStyleBackColor = true;
+      // 
+      // longestPathSource
+      // 
+      longestPathSource.AutoSize = true;
+      longestPathSource.Location = new System.Drawing.Point(142, 3);
+      longestPathSource.Name = "longestPathSource";
+      longestPathSource.Size = new System.Drawing.Size(137, 21);
+      longestPathSource.TabIndex = 1;
+      longestPathSource.Text = "LongestPathSource";
+      longestPathSource.UseVisualStyleBackColor = true;
+      // 
+      // longestPathSink
+      // 
+      longestPathSink.AutoSize = true;
+      longestPathSink.Location = new System.Drawing.Point(285, 3);
+      longestPathSink.Name = "longestPathSink";
+      longestPathSink.Size = new System.Drawing.Size(120, 21);
+      longestPathSink.TabIndex = 2;
+      longestPathSink.Text = "LongestPathSink";
+      longestPathSink.UseVisualStyleBackColor = true;
+      // 
+      // label10
+      // 
+      label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      label10.AutoSize = true;
+      label10.Location = new System.Drawing.Point(3, 186);
+      label10.Name = "label10";
+      label10.Size = new System.Drawing.Size(57, 17);
+      label10.TabIndex = 11;
+      label10.Text = "Initialize:";
+      // 
+      // initialize
+      // 
+      initialize.AutoSize = true;
+      initialize.Controls.Add(depthFirstOut);
+      initialize.Controls.Add(depthFirstIn);
+      initialize.Controls.Add(naive);
+      flowLayoutPanel3.SetFlowBreak(initialize, true);
+      initialize.Location = new System.Drawing.Point(66, 181);
+      initialize.Name = "initialize";
+      initialize.Size = new System.Drawing.Size(278, 27);
+      initialize.TabIndex = 12;
+      // 
+      // depthFirstOut
+      // 
+      depthFirstOut.AutoSize = true;
+      depthFirstOut.Checked = true;
+      depthFirstOut.Location = new System.Drawing.Point(3, 3);
+      depthFirstOut.Name = "depthFirstOut";
+      depthFirstOut.Size = new System.Drawing.Size(106, 21);
+      depthFirstOut.TabIndex = 0;
+      depthFirstOut.TabStop = true;
+      depthFirstOut.Text = "DepthFirstOut";
+      depthFirstOut.UseVisualStyleBackColor = true;
+      // 
+      // depthFirstIn
+      // 
+      depthFirstIn.AutoSize = true;
+      depthFirstIn.Location = new System.Drawing.Point(115, 3);
+      depthFirstIn.Name = "depthFirstIn";
+      depthFirstIn.Size = new System.Drawing.Size(95, 21);
+      depthFirstIn.TabIndex = 1;
+      depthFirstIn.Text = "DepthFirstIn";
+      depthFirstIn.UseVisualStyleBackColor = true;
+      // 
+      // naive
+      // 
+      naive.AutoSize = true;
+      naive.Location = new System.Drawing.Point(216, 3);
+      naive.Name = "naive";
+      naive.Size = new System.Drawing.Size(59, 21);
+      naive.TabIndex = 2;
+      naive.Text = "Naive";
+      naive.UseVisualStyleBackColor = true;
+      // 
+      // label11
+      // 
+      label11.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      label11.AutoSize = true;
+      label11.Location = new System.Drawing.Point(3, 219);
+      label11.Name = "label11";
+      label11.Size = new System.Drawing.Size(75, 17);
+      label11.TabIndex = 13;
+      label11.Text = "Aggressive:";
+      // 
+      // aggressive
+      // 
+      aggressive.AutoSize = true;
+      aggressive.Controls.Add(none);
+      aggressive.Controls.Add(less);
+      aggressive.Controls.Add(more);
+      flowLayoutPanel3.SetFlowBreak(aggressive, true);
+      aggressive.Location = new System.Drawing.Point(84, 214);
+      aggressive.Name = "aggressive";
+      aggressive.Size = new System.Drawing.Size(185, 27);
+      aggressive.TabIndex = 14;
+      // 
+      // none
+      // 
+      none.AutoSize = true;
+      none.Location = new System.Drawing.Point(3, 3);
+      none.Name = "none";
+      none.Size = new System.Drawing.Size(58, 21);
+      none.TabIndex = 0;
+      none.Text = "None";
+      none.UseVisualStyleBackColor = true;
+      // 
+      // less
+      // 
+      less.AutoSize = true;
+      less.Checked = true;
+      less.Location = new System.Drawing.Point(67, 3);
+      less.Name = "less";
+      less.Size = new System.Drawing.Size(51, 21);
+      less.TabIndex = 1;
+      less.TabStop = true;
+      less.Text = "Less";
+      less.UseVisualStyleBackColor = true;
+      // 
+      // more
+      // 
+      more.AutoSize = true;
+      more.Location = new System.Drawing.Point(124, 3);
+      more.Name = "more";
+      more.Size = new System.Drawing.Size(58, 21);
+      more.TabIndex = 2;
+      more.Text = "More";
+      more.UseVisualStyleBackColor = true;
+      // 
+      // label12
+      // 
+      label12.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      label12.AutoSize = true;
+      label12.Location = new System.Drawing.Point(3, 249);
+      label12.Name = "label12";
+      label12.Size = new System.Drawing.Size(37, 17);
+      label12.TabIndex = 15;
+      label12.Text = "Pack:";
+      // 
+      // median
+      // 
+      median.AutoSize = true;
+      median.Checked = true;
+      median.CheckState = System.Windows.Forms.CheckState.Checked;
+      median.Location = new System.Drawing.Point(46, 247);
+      median.Name = "median";
+      median.Size = new System.Drawing.Size(71, 21);
+      median.TabIndex = 16;
+      median.Text = "Median";
+      median.UseVisualStyleBackColor = true;
+      // 
+      // straighten
+      // 
+      straighten.AutoSize = true;
+      straighten.Checked = true;
+      straighten.CheckState = System.Windows.Forms.CheckState.Checked;
+      straighten.Location = new System.Drawing.Point(123, 247);
+      straighten.Name = "straighten";
+      straighten.Size = new System.Drawing.Size(86, 21);
+      straighten.TabIndex = 17;
+      straighten.Text = "Straighten";
+      straighten.UseVisualStyleBackColor = true;
+      // 
+      // expand
+      // 
+      expand.AutoSize = true;
+      expand.Checked = true;
+      expand.CheckState = System.Windows.Forms.CheckState.Checked;
+      flowLayoutPanel3.SetFlowBreak(expand, true);
+      expand.Location = new System.Drawing.Point(215, 247);
+      expand.Name = "expand";
+      expand.Size = new System.Drawing.Size(70, 21);
+      expand.TabIndex = 18;
+      expand.Text = "Expand";
+      expand.UseVisualStyleBackColor = true;
+      // 
+      // label13
+      // 
+      label13.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      label13.AutoSize = true;
+      label13.Location = new System.Drawing.Point(3, 276);
+      label13.Name = "label13";
+      label13.Size = new System.Drawing.Size(40, 17);
+      label13.TabIndex = 19;
+      label13.Text = "Align:";
+      // 
+      // upperLeft
+      // 
+      upperLeft.AutoSize = true;
+      upperLeft.Checked = true;
+      upperLeft.CheckState = System.Windows.Forms.CheckState.Checked;
+      upperLeft.Location = new System.Drawing.Point(49, 274);
+      upperLeft.Name = "upperLeft";
+      upperLeft.Size = new System.Drawing.Size(85, 21);
+      upperLeft.TabIndex = 20;
+      upperLeft.Text = "UpperLeft";
+      upperLeft.UseVisualStyleBackColor = true;
+      // 
+      // upperRight
+      // 
+      upperRight.AutoSize = true;
+      upperRight.Checked = true;
+      upperRight.CheckState = System.Windows.Forms.CheckState.Checked;
+      upperRight.Location = new System.Drawing.Point(140, 274);
+      upperRight.Name = "upperRight";
+      upperRight.Size = new System.Drawing.Size(94, 21);
+      upperRight.TabIndex = 21;
+      upperRight.Text = "UpperRight";
+      upperRight.UseVisualStyleBackColor = true;
+      // 
+      // lowerLeft
+      // 
+      lowerLeft.AutoSize = true;
+      lowerLeft.Checked = true;
+      lowerLeft.CheckState = System.Windows.Forms.CheckState.Checked;
+      lowerLeft.Location = new System.Drawing.Point(240, 274);
+      lowerLeft.Name = "lowerLeft";
+      lowerLeft.Size = new System.Drawing.Size(83, 21);
+      lowerLeft.TabIndex = 22;
+      lowerLeft.Text = "LowerLeft";
+      lowerLeft.UseVisualStyleBackColor = true;
+      // 
+      // lowerRight
+      // 
+      lowerRight.AutoSize = true;
+      lowerRight.Checked = true;
+      lowerRight.CheckState = System.Windows.Forms.CheckState.Checked;
+      flowLayoutPanel3.SetFlowBreak(lowerRight, true);
+      lowerRight.Location = new System.Drawing.Point(329, 274);
+      lowerRight.Name = "lowerRight";
+      lowerRight.Size = new System.Drawing.Size(92, 21);
+      lowerRight.TabIndex = 23;
+      lowerRight.Text = "LowerRight";
+      lowerRight.UseVisualStyleBackColor = true;
+      // 
+      // setsPortSpots
+      // 
+      setsPortSpots.AutoSize = true;
+      setsPortSpots.Checked = true;
+      setsPortSpots.CheckState = System.Windows.Forms.CheckState.Checked;
+      setsPortSpots.Location = new System.Drawing.Point(3, 301);
+      setsPortSpots.Name = "setsPortSpots";
+      setsPortSpots.Size = new System.Drawing.Size(108, 21);
+      setsPortSpots.TabIndex = 24;
+      setsPortSpots.Text = "SetsPortSpots";
+      setsPortSpots.UseVisualStyleBackColor = true;
+      // 
+      // diagramControl1
+      // 
+      diagramControl1.AllowDrop = true;
+      diagramControl1.BackColor = System.Drawing.Color.White;
+      diagramControl1.Dock = System.Windows.Forms.DockStyle.Top;
+      diagramControl1.Location = new System.Drawing.Point(4, 340);
+      diagramControl1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+      diagramControl1.Name = "diagramControl1";
+      diagramControl1.Size = new System.Drawing.Size(992, 494);
+      diagramControl1.TabIndex = 2;
+      // 
+      // desc1
+      // 
+      desc1.AllowExternalDrop = true;
+      desc1.CreationProperties = null;
+      desc1.DefaultBackgroundColor = System.Drawing.Color.White;
+      desc1.Dock = System.Windows.Forms.DockStyle.Top;
+      desc1.Location = new System.Drawing.Point(3, 840);
+      desc1.Name = "desc1";
+      desc1.Size = new System.Drawing.Size(994, 60);
+      desc1.TabIndex = 3;
+      desc1.ZoomFactor = 1D;
+      // 
+      // LDLayout
+      // 
+      AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+      AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      Controls.Add(tableLayoutPanel1);
+      Name = "LDLayout";
+      Size = new System.Drawing.Size(1000, 923);
+      tableLayoutPanel1.ResumeLayout(false);
+      tableLayoutPanel1.PerformLayout();
+      flowLayoutPanel1.ResumeLayout(false);
+      flowLayoutPanel1.PerformLayout();
+      flowLayoutPanel2.ResumeLayout(false);
+      flowLayoutPanel2.PerformLayout();
+      flowLayoutPanel3.ResumeLayout(false);
+      flowLayoutPanel3.PerformLayout();
+      direction.ResumeLayout(false);
+      direction.PerformLayout();
+      cycleRemove.ResumeLayout(false);
+      cycleRemove.PerformLayout();
+      layering.ResumeLayout(false);
+      layering.PerformLayout();
+      initialize.ResumeLayout(false);
+      initialize.PerformLayout();
+      aggressive.ResumeLayout(false);
+      aggressive.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)desc1).EndInit();
+      ResumeLayout(false);
 
     }
 
@@ -696,5 +766,10 @@ namespace Demo.Samples.LDLayout {
     private System.Windows.Forms.CheckBox straighten;
     private System.Windows.Forms.CheckBox expand;
     private System.Windows.Forms.CheckBox setsPortSpots;
+    private System.Windows.Forms.Label label13;
+    private System.Windows.Forms.CheckBox upperLeft;
+    private System.Windows.Forms.CheckBox upperRight;
+    private System.Windows.Forms.CheckBox lowerLeft;
+    private System.Windows.Forms.CheckBox lowerRight;
   }
 }

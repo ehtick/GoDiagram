@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Linq;
 using Northwoods.Go;
@@ -49,12 +49,12 @@ namespace Demo.Extensions.PolygonDrawing {
             Rotatable = true, RotationSpot = Spot.Center,
             Reshapable = true
           }
-          .Bind("Location", "Loc", Point.Parse, Point.Stringify)
-          .Bind(new Binding("Angle").MakeTwoWay())
+          .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
+          .BindTwoWay("Angle")
           .Add(
             new Shape { Name = "SHAPE", Fill = "lightgray", StrokeWidth = 1.5 }
               .Bind(
-                new Binding("DesiredSize", "Size", Northwoods.Go.Size.Parse).MakeTwoWay(Northwoods.Go.Size.Stringify),
+                new Binding("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify),
                 new Binding("GeometryString", "Geo").MakeTwoWay(),
                 new Binding("Fill"),
                 new Binding("Stroke"),

@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using Northwoods.Go;
@@ -255,7 +255,7 @@ namespace Demo.Extensions.PortShifting {
           ResizeElementName = "NODESHAPE",
           ToolTip = sharedToolTip
         }.Bind(
-          new Binding("Location", "Loc", Point.Parse).MakeTwoWay(Point.Stringify),
+          new Binding("Location", "Loc", Point.Parse, Point.Stringify),
           new Binding("IsShadowed", "IsSelected").OfElement()
         );
       }

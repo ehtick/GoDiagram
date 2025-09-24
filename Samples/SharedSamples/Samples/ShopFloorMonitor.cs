@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -45,7 +45,7 @@ namespace Demo.Samples.ShopFloorMonitor {
     private void Setup() {
       // conversion functions for bindings in the node template
       string NodeTypeImage(object type) {
-        var str = "https://nwoods.com/go/images/samples/";
+        var str = "https://nwoods.com/images/samples/";
         switch (type as string) {                                     // Image sizes
           case "S2": return $"{str}voice atm switch.jpg";             // 55x55
           case "S3": return $"{str}server switch.jpg";                // 55x55
@@ -93,7 +93,7 @@ namespace Demo.Samples.ShopFloorMonitor {
       // node template
       _Diagram.NodeTemplate =
         new Node("Vertical") { LocationElementName = "ICON", LocationSpot = Spot.Center }
-          .Bind("Location", "Loc", Point.Parse, Point.Stringify)
+          .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
           .Add(
             new Panel("Spot")
               .Add(

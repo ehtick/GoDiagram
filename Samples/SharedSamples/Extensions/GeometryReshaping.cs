@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using Northwoods.Go;
@@ -32,7 +32,7 @@ namespace Demo.Extensions.GeometryReshaping {
           }
           .Add(
             new Shape { Name = "SHAPE", Fill = "lightgray", StrokeWidth = 1.5 }
-              .Bind(new Binding("GeometryString", "Geo").MakeTwoWay())
+              .BindTwoWay("GeometryString", "Geo")
           );
 
       _Diagram.Model = new Model {

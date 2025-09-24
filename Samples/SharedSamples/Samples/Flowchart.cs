@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using Northwoods.Go;
@@ -51,8 +51,11 @@ namespace Demo.Samples.Flowchart {
       modelJson1.SaveClick = SaveModel;
       modelJson1.LoadClick = LoadModel;
 
-      Setup();
-      SetupPalette();
+      // load palette and diagram at the same time, after the page is ready
+      AfterLoad(() => {
+        Setup();
+        SetupPalette();
+      });
     }
 
     // Define a function for creating a "port" that is normally transparent.
@@ -93,7 +96,7 @@ namespace Demo.Samples.Flowchart {
       DefineFileFigure();
 
       void nodeStyle(Node node) {
-        node.Bind("Location", "Loc", Point.Parse, Point.Stringify);
+        node.BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify);
       }
 
       var textStyle = new {
@@ -118,9 +121,7 @@ namespace Demo.Samples.Flowchart {
                 MaxSize = new Size(160, double.NaN),
                 Wrap = Wrap.Fit,
                 Editable = true
-              }.Set(textStyle).Bind(
-                new Binding("Text").MakeTwoWay()
-              )
+              }.Set(textStyle).BindTwoWay("Text")
             ),
             MakePort("T", Spot.Top, Spot.TopSide, false, true),
             MakePort("L", Spot.Left, Spot.LeftSide, true, true),
@@ -144,9 +145,7 @@ namespace Demo.Samples.Flowchart {
                 MaxSize = new Size(160, double.NaN),
                 Wrap = Wrap.Fit,
                 Editable = true
-              }.Set(textStyle).Bind(
-                new Binding("Text").MakeTwoWay()
-              )
+              }.Set(textStyle).BindTwoWay("Text")
             ),
             MakePort("T", Spot.Top, Spot.TopSide, false, true),
             MakePort("L", Spot.Left, Spot.LeftSide, true, true),
@@ -212,9 +211,8 @@ namespace Demo.Samples.Flowchart {
               Wrap = Wrap.Fit,
               TextAlign = TextAlign.Center,
               Editable = true
-            }.Set(textStyle).Bind(
-              new Binding("Text").MakeTwoWay()
-            ) // no ports, since links are not allowed to connect with a comment
+            }.Set(textStyle).BindTwoWay("Text")
+            // no ports, since links are not allowed to connect with a comment
           )
         }
       };
@@ -271,7 +269,7 @@ namespace Demo.Samples.Flowchart {
         },
         SelectionAdorned = false
       }
-      .Bind(new Binding("Points").MakeTwoWay())
+      .BindTwoWay("Points")
       .Add(new Shape { // The highlight shape, normally transparent
         IsPanelMain = true, StrokeWidth = 8, Stroke = "transparent", Name = "HIGHLIGHT"
       },
@@ -284,7 +282,7 @@ namespace Demo.Samples.Flowchart {
         new Panel(PanelType.Auto) { // the LinkLabel, normally not visible
           Visible = false, Name = "LABEL", SegmentIndex = 2, SegmentFraction = 0.5
         }
-        .Bind(new Binding("Visible", "Visible").MakeTwoWay())
+        .BindTwoWay("Visible")
         .Add(
           new Shape("RoundedRectangle") {  // the label shape
             Fill = "#F8F8F8", StrokeWidth = 0
@@ -294,7 +292,7 @@ namespace Demo.Samples.Flowchart {
             Font = new Font("Arial", 10, FontUnit.Point),
             Stroke = "#333333",
             Editable = true
-          }.Bind(new Binding("Text").MakeTwoWay())
+          }.BindTwoWay("Text")
         )
       );
 

@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -138,6 +138,13 @@ namespace Demo.Samples.LDLayout {
       lay.PackOption = packOption;
 
       lay.SetsPortSpots = _GetChecked(setsPortSpots);
+
+      var alignOption = LayeredDigraphAlign.None;
+      if (_GetChecked(upperLeft)) alignOption |= LayeredDigraphAlign.UpperLeft;
+      if (_GetChecked(upperRight)) alignOption |= LayeredDigraphAlign.UpperRight;
+      if (_GetChecked(lowerLeft)) alignOption |= LayeredDigraphAlign.LowerLeft;
+      if (_GetChecked(lowerRight)) alignOption |= LayeredDigraphAlign.LowerRight;
+      lay.AlignOption = alignOption;
 
       _Diagram.CommitTransaction("change layout");
     }

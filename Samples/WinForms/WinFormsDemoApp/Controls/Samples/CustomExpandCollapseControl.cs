@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -40,7 +40,8 @@ namespace Demo.Samples.CustomExpandCollapse {
       myDiagram.Padding = 10;
       myDiagram.Layout = new LayeredDigraphLayout {
         Direction = 90,
-        LayeringOption = LayeredDigraphLayering.LongestPathSource
+        LayeringOption = LayeredDigraphLayering.LongestPathSource,
+        AlignOption = LayeredDigraphAlign.All
       };
       myDiagram.UndoManager.IsEnabled = true;
 

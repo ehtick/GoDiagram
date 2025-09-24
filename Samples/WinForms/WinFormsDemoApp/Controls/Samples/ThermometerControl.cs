@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -82,7 +82,7 @@ namespace Demo.Samples.Thermometer {
                 StrokeWidth = 0,
                 Fill = "rgba(0,0,0,.05)"
               }
-              .Bind(new Binding("Height").MakeTwoWay()),
+              .BindTwoWay("Height"),
 
             // Farenheit scale, on the left:
             new Panel("Graduated") {

@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using Northwoods.Go;
 using Northwoods.Go.Layouts;
@@ -52,6 +52,7 @@ namespace Demo.Samples.SequentialFunction {
       _Diagram.Layout = new LayeredDigraphLayout {
         Direction = 90,
         LayerSpacing = 10,
+        AlignOption = LayeredDigraphAlign.All,
         SetsPortSpots = false
       };
       _Diagram.UndoManager.IsEnabled = true; // enable undo and redo
@@ -61,7 +62,7 @@ namespace Demo.Samples.SequentialFunction {
         new Node("Spot") {
           LocationSpot = Spot.Center
         }
-          .Bind("Location", "Loc", Point.Parse, Point.Stringify)
+          .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
           .Add(
             new Shape("Rectangle") {
               Fill = "whitesmoke",
@@ -79,7 +80,7 @@ namespace Demo.Samples.SequentialFunction {
               Wrap = Wrap.Fit,
               Editable = true
             }
-              .Bind(new Binding("Text").MakeTwoWay())
+              .BindTwoWay("Text")
           )
       );
 
@@ -88,7 +89,7 @@ namespace Demo.Samples.SequentialFunction {
         new Node("Horizontal") {
           LocationSpot = Spot.Center, LocationElementName = "BAR"
         }
-          .Bind("Location", "Loc", Point.Parse, Point.Stringify)
+          .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
           .Add(
             new Shape("Rectangle") {
               Name = "BAR",
@@ -102,7 +103,7 @@ namespace Demo.Samples.SequentialFunction {
             new TextBlock {
               Editable = true, Margin = 3
             }
-              .Bind(new Binding("Text").MakeTwoWay())
+              .BindTwoWay("Text")
           )
       );
 
@@ -111,7 +112,7 @@ namespace Demo.Samples.SequentialFunction {
         new Node {
           LocationSpot = Spot.Center
         }
-          .Bind("Location", "Loc", Point.Parse, Point.Stringify)
+          .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
           .Add(
             new Shape("Rectangle") {
               Fill = "whitesmoke",

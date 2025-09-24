@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using Northwoods.Go;
@@ -31,7 +31,7 @@ namespace Demo.Samples.VisualTree {
 
       _Diagram.NodeTemplate =
         new Node("Auto")
-          .Bind(new Binding("Location").MakeTwoWay())
+          .BindTwoWay("Location")
           .Add(
             new Shape("RoundedRectangle") { Fill = "white", StrokeWidth = 0 }.Bind("Fill", "Color"),
             new TextBlock { Margin = 5 }.Bind("Text", "Key")

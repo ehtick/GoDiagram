@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using Northwoods.Go;
@@ -64,10 +64,10 @@ namespace Demo.Extensions.NodeLabelDragging {
           Editable = true, // editing the text automatically updates the model data
           Cursor = "move" // visual hint that the user can do something with this node label
         }.Bind(
-          new Binding("Text", "Text").MakeTwoWay(),
+          new Binding("Text").MakeTwoWay(),
           // the GraphObject.Alignment property is what the NodelabelDraggingTool modifies
           // This TwoWay binding saves any changes to the same named property on the node data
-          new Binding("Alignment", "Alignment", Spot.Parse).MakeTwoWay(Spot.Stringify)
+          new Binding("Alignment", "Alignment", Spot.Parse, Spot.Stringify)
         );
       textblock["_IsNodeLabel"] = true;
 
@@ -79,7 +79,7 @@ namespace Demo.Extensions.NodeLabelDragging {
           LocationSpot = Spot.Center,
           SelectionElementName = "ICON"
         }
-        .Bind(new Binding("Location", "Loc", Point.Parse).MakeTwoWay(Point.Stringify))
+        .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
         .Add(new Shape {
           Figure = "RoundedRectangle",
           Name = "ICON",
@@ -180,7 +180,8 @@ namespace Demo.Extensions.NodeLabelDragging {
           Adjusting = LinkAdjusting.Stretch,
           Reshapable = true
         }
-        .Bind(new Binding("Points").MakeTwoWay(),
+        .Bind(
+          new Binding("Points").MakeTwoWay(),
           new Binding("Curviness"))
         .Add(new Shape { // the link shape
           StrokeWidth = 1.5
@@ -202,7 +203,7 @@ namespace Demo.Extensions.NodeLabelDragging {
                 Stroke = "black",
                 Margin = 4,
                 Editable = true
-              }.Bind(new Binding("Text", "Text").MakeTwoWay())
+              }.BindTwoWay("Text")
             )
         );
 

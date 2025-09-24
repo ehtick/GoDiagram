@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +31,7 @@ namespace Demo.Extensions.OrthogonalLinkReshaping {
           Width = 80,
           Height = 50,
           LocationSpot = Spot.Center
-        }.Bind(new Binding("Location", "Loc", Point.Parse).MakeTwoWay(Point.Stringify))
+        }.BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
         .Add(
           new Shape {
             Fill = "lightgray"
@@ -49,7 +49,7 @@ namespace Demo.Extensions.OrthogonalLinkReshaping {
           Routing = LinkRouting.AvoidsNodes,
           Reshapable = true,
           Resegmentable = true
-        }.Bind(new Binding("Points").MakeTwoWay())
+        }.BindTwoWay("Points")
         .Add(
           new Shape {
             StrokeWidth = 2

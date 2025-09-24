@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -106,7 +106,7 @@ namespace Demo.Samples.RuleredDiagram {
       // Keep references to the scales and indicators to easily update them
       var gradScaleHoriz =
         new Part("Graduated") {
-            GraduatedTickUnit = 10, Pickable = false, LayerName = "Grid", IsAnimated = false
+            GraduatedTickUnit = 10, LayerName = "ViewportBackground", Alignment = Spot.TopLeft, IsAnimated = false
           }
           .Add(
             new Shape { GeometryString = "M0 0 H400" },
@@ -122,7 +122,7 @@ namespace Demo.Samples.RuleredDiagram {
 
       var gradScaleVert =
         new Part("Graduated") {
-            GraduatedTickUnit = 10, Pickable = false, LayerName = "Grid", IsAnimated = false
+            GraduatedTickUnit = 10, LayerName = "ViewportBackground", Alignment = Spot.TopLeft, IsAnimated = false
           }
           .Add(
             new Shape { GeometryString = "M0 0 V400" },

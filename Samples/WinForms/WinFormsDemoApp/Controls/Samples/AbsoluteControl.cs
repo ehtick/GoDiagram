@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -43,10 +43,11 @@ namespace Demo.Samples.Absolute {
 
       // diagram properties
       myDiagram.FixedBounds = new Rect(0, 0, 500, 300);   // document is always 500x300 units
+      myDiagram.ContentAlignment = Spot.Center;
       myDiagram.AllowHorizontalScroll = false;   // disallow scrolling or panning
       myDiagram.AllowVerticalScroll = false;
       myDiagram.AllowZoom = false;
-      // myDiagram.AnimationManager.IsEnabled = false
+      myDiagram.AnimationManager.IsEnabled = false;
       myDiagram.UndoManager.IsEnabled = true;
       myDiagram.ModelChanged += (obj, e) => {
         if (e.IsTransactionFinished) {  // show the model data in the page's TextArea
@@ -57,14 +58,22 @@ namespace Demo.Samples.Absolute {
       // the background Part showing the fixed bounds of the diagram contents
       myDiagram.Add(
         new Part {
-          LayerName = "Grid",
-          Position = myDiagram.FixedBounds.Position
+          LayerName = "ViewportBackground",
+          Alignment = Spot.Center,
+          IsShadowed = true,
+          Padding = 1
         }.Add(
-          new Shape {
-            Fill = "oldlace",
-            StrokeWidth = 0,
-            DesiredSize = myDiagram.FixedBounds.Size
-          })
+          new Panel(PanelType.Auto)
+            .Add(
+              new Shape { StrokeWidth = 0 },
+              new Shape {
+                Fill = "oldlace",
+                StrokeWidth = 1,
+                Stroke = "transparent",
+                DesiredSize = myDiagram.FixedBounds.Size,
+                Margin = 1
+              })
+            )
         );
 
       // This function is the Node.DragComputation, to limit the movement of the parts.

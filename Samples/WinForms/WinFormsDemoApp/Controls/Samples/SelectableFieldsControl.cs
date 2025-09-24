@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -115,7 +115,7 @@ namespace Demo.Samples.SelectableFields {
       // This template represents a whole "record"
       myDiagram.NodeTemplate =
         new Node("Auto") { Copyable = false, Deletable = false }
-          .Bind("Location", "Loc", Point.Parse, Point.Stringify)
+          .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
           .Add(
             // this rectangular shape surrounds the contents of the node
             new Shape { Fill = "#EEEEEE" },

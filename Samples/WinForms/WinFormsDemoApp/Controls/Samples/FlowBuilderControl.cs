@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -56,6 +56,7 @@ namespace Demo.Samples.FlowBuilder {
       myDiagram.Layout = new LayeredDigraphLayout {
         SetsPortSpots = false,  // Links already know their fromSpot and toSpot
         ColumnSpacing = 5,
+        AlignOption = LayeredDigraphAlign.All,
         IsInitial = false,
         IsOngoing = false
       };
@@ -76,9 +77,8 @@ namespace Demo.Samples.FlowBuilder {
           SelectionAdorned = false,
           TextEditable = true,
           LocationElementName = "BODY"
-        }.Bind(
-          new Binding("Location", "Loc", Point.Parse).MakeTwoWay(Point.Stringify)
-        ).Add(
+        }.BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
+        .Add(
           // the main body consists of a Rectangle surrounding the text
           new Panel(PanelType.Auto) {
             Name = "BODY"
@@ -97,9 +97,7 @@ namespace Demo.Samples.FlowBuilder {
               Editable = true,
               Margin = new Margin(3, 3 + 11, 3, 3 + 4),
               Alignment = Spot.Left
-            }.Bind(
-              new Binding("Text").MakeTwoWay()
-            )
+            }.BindTwoWay("Text")
           ),
           // output port
           new Panel(PanelType.Auto) {
@@ -191,9 +189,7 @@ namespace Demo.Samples.FlowBuilder {
           SelectionAdorned = false,
           TextEditable = true,
           LocationElementName = "BODY"
-        }.Bind(
-          new Binding("Location", "Loc", Point.Parse).MakeTwoWay(Point.Stringify)
-        ).Add(
+        }.BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify).Add(
           // the main body consists of a Rectangle surrounding the text
           new Panel(PanelType.Auto) {
             Name = "BODY"
@@ -248,9 +244,7 @@ namespace Demo.Samples.FlowBuilder {
           SelectionAdorned = false,
           TextEditable = true,
           LocationElementName = "BODY"
-        }.Bind(
-          new Binding("Location", "Loc", Point.Parse).MakeTwoWay(Point.Stringify)
-        ).Add(
+        }.BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify).Add(
           // the main body consists of a Rectangle surrounding the text
           new Panel(PanelType.Auto) {
             Name = "BODY"
@@ -308,9 +302,7 @@ namespace Demo.Samples.FlowBuilder {
           LocationSpot = Spot.Center,
           DragComputation = (node, pt, gridpt) => { return pt; },
           MouseDrop = (e, obj) => { myDiagram.CommandHandler.DeleteSelection(); }
-        }.Bind(
-          new Binding("Location", "Loc", Point.Parse).MakeTwoWay(Point.Stringify)
-        ).Add(
+        }.BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify).Add(
           new Shape { Fill = "lightgray", Stroke = "gray" },
           new TextBlock {
             Text = "Drop Here\nTo Delete",

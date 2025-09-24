@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -84,7 +84,7 @@ namespace Demo.Samples.Planogram {
             }
           }
           // always save/load the point that is the top-left corner of the node, not the location
-          .Bind("Position", "Pos", Point.Parse, Point.Stringify)
+          .BindTwoWay("Position", "Pos", Point.Parse, Point.Stringify)
           .Add(
             new Shape {
                 Figure = "Rectangle",
@@ -219,7 +219,7 @@ namespace Demo.Samples.Planogram {
             node.Diagram.CurrentTool.DoCancel();
           }
         }
-        .Bind("Position", "Pos", Point.Parse, Point.Stringify)
+        .BindTwoWay("Position", "Pos", Point.Parse, Point.Stringify)
         .Add(
            // this is the primary thing people see
            new Shape {
@@ -230,7 +230,7 @@ namespace Demo.Samples.Planogram {
                DesiredSize = CellSize  // initially 1x1 cell
              }
              .Bind("Fill", "Color")
-             .Bind("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify),
+             .BindTwoWay("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify),
            // with the textual key in the middle
            new TextBlock {
                Alignment = Spot.Center,

@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using Northwoods.Go;
@@ -141,10 +141,8 @@ namespace Demo.Samples.Regrouping {
                         Opacity = 0.90,  // allow some color to show through
                         Stroke = "#404040"
                       }
-                      .Bind(
-                        new Binding("Font", "Horiz", (h) => defaultFont((bool)h)),
-                        new Binding("Text", "Text").MakeTwoWay()
-                      )
+                      .BindTwoWay("Text")
+                      .Bind("Font", "Horiz", (h) => defaultFont((bool)h))
                   ), // end Horizontal Panel
                 new Placeholder { Padding = 5, Alignment = Spot.TopLeft }
               ) // end Vertical Panel
@@ -164,7 +162,7 @@ namespace Demo.Samples.Regrouping {
                 Opacity = 0.90,
                 Stroke = "#404040"
               }
-              .Bind(new Binding("Text", "Text").MakeTwoWay())
+              .BindTwoWay("Text")
           );
     }
 

@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -37,7 +37,7 @@ namespace Demo.Samples.Navigation {
                     .Bind("Text", "", _GetInfo)
                 )
           }
-          .Bind(new Binding("Location").MakeTwoWay())
+          .BindTwoWay("Location")
           .Add(
             new Shape {
                 Name = "OBJSHAPE",

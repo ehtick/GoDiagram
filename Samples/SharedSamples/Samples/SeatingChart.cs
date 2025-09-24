@@ -1,12 +1,12 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
-using Northwoods.Go;
-using Northwoods.Go.Models;
-using Northwoods.Go.Layouts;
-using Northwoods.Go.Tools;
 using System.Linq;
+using Northwoods.Go;
+using Northwoods.Go.Layouts;
+using Northwoods.Go.Models;
+using Northwoods.Go.Tools;
 
 namespace Demo.Samples.SeatingChart {
   public partial class SeatingChart : DemoControl {
@@ -61,31 +61,26 @@ namespace Demo.Samples.SeatingChart {
     private void DefineNodeTemplates() {
       if (_SharedNodeTemplateMap != null) return;  // already defined
 
-      var tableStyle = new {
-        Background = "transparent",
-        LayerName = "Background", // behind all Persons
-        LocationSpot = Spot.Center,
-        LocationElementName = "TABLESHAPE",
-        Rotatable = true,
+      void tableStyle(Node node) {
+        node.Background = "transparent";
+        node.LayerName = "Background"; // behind all Persons
+        node.LocationSpot = Spot.Center;
+        node.LocationElementName = "TABLESHAPE";
+        node.Rotatable = true;
         // what to do when a drag-over or a drag-drop occurs on a Node, representing a table
-        MouseDragEnter = new Action<InputEvent, GraphObject, GraphObject>((e, node, prev) => {
+        node.MouseDragEnter = new Action<InputEvent, GraphObject, GraphObject>((e, node, prev) => {
           var dragCopy = node.Diagram.ToolManager.DraggingTool.CopiedParts?.Keys.ToList(); // could be copied from palette
           _HighlightSeats(node as Node, dragCopy ?? node.Diagram.Selection, true);
-        }),
-        MouseDragLeave = new Action<InputEvent, GraphObject, GraphObject>((e, node, next) => {
+        });
+        node.MouseDragLeave = new Action<InputEvent, GraphObject, GraphObject>((e, node, next) => {
           var dragCopy = node.Diagram.ToolManager.DraggingTool.CopiedParts?.Keys.ToList();
           _HighlightSeats(node as Node, dragCopy ?? node.Diagram.Selection, false);
-        }),
-        MouseDrop = new Action<InputEvent, GraphObject>((e, node) => {
+        });
+        node.MouseDrop = new Action<InputEvent, GraphObject>((e, node) => {
           _AssignPeopleToSeats(node as Node, node.Diagram.Selection, e.DocumentPoint);
-        })
-      };
-
-      Binding[] tableBind() {
-        return new[] {
-          new Binding("Location", "Loc", Point.Parse, Point.Stringify),
-          new Binding("Angle").MakeTwoWay()
-        };
+        });
+        node.BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify);
+        node.BindTwoWay("Angle");
       }
 
       _SharedNodeTemplateMap = new Dictionary<string, Part> {
@@ -107,12 +102,10 @@ namespace Demo.Samples.SeatingChart {
                 _AssignPeopleToSeats(node as Node, node.Diagram.Selection, e.DocumentPoint);
               }
             }
-            .Bind(
-              // when selected is in foreground layer
-              new Binding("LayerName", "IsSelected", s => (bool)s ? "Foreground" : "").OfElement(),
-              new Binding("Location", "Loc", Point.Parse, Point.Stringify),
-              new Binding("Text", "Key")
-            )
+            .Bind("Text", "Key")
+            .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
+            // when selected is in foreground layer
+            .BindElement("LayerName", "IsSelected", s => (bool)s ? "Foreground" : "")
             .Add(
               new Shape {
                   Figure = "Rectangle",
@@ -130,13 +123,12 @@ namespace Demo.Samples.SeatingChart {
                       TextAlign = TextAlign.Center,
                       Stroke = "darkblue"
                     }
-                    .Bind(
-                      new Binding("Text", "", (data, _) => {
+                    .Bind("Text", "", (data, _) => {
                         var _data = data as NodeData;
                         var s = "" + _data.Key;
                         if (_data.Plus != 0) s += " +" + _data.Plus;
                         return s;
-                      })
+                      }
                     )
                 )
             )
@@ -145,8 +137,7 @@ namespace Demo.Samples.SeatingChart {
         {
           "TableR8",  // rectangular with 8 seats
           new Node("Spot")
-            .Set(tableStyle)
-            .Bind(tableBind())
+            .Apply(tableStyle)
             .Add(
               new Panel("Spot")
                 .Add(
@@ -157,15 +148,13 @@ namespace Demo.Samples.SeatingChart {
                       Fill = "burlywood",
                       Stroke = null
                     }
-                    .Bind("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify)
+                    .BindTwoWay("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify)
                     .Bind("Fill"),
                   new TextBlock {
                       Editable = true, Font = new Font("Verdana", 11, Northwoods.Go.FontWeight.Bold)
                     }
-                    .Bind(
-                      new Binding("Text", "Name").MakeTwoWay(),
-                      new Binding("Angle", "Angle", (n, _) => -(double)n)
-                    )
+                    .BindTwoWay("Text", "Name")
+                    .Bind("Angle", "Angle", (n, _) => -(double)n)
                 ),
               Seat(1, "0.2 0", "0.5 1"),
               Seat(2, "0.5 0", "0.5 1"),
@@ -180,8 +169,7 @@ namespace Demo.Samples.SeatingChart {
         {
           "TableR3",  // rectangular with 3 seats in a line
           new Node("Spot")
-            .Set(tableStyle)
-            .Bind(tableBind())
+            .Apply(tableStyle)
             .Add(
               new Panel("Spot")
                 .Add(
@@ -192,16 +180,14 @@ namespace Demo.Samples.SeatingChart {
                       Fill = "burlywood",
                       Stroke = null
                     }
-                    .Bind("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify)
+                    .BindTwoWay("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify)
                     .Bind("Fill"),
                   new TextBlock {
                       Editable = true,
                       Font = new Font("Verdana", 11, Northwoods.Go.FontWeight.Bold)
                     }
-                    .Bind(
-                      new Binding("Text", "Name").MakeTwoWay(),
-                      new Binding("Angle", "Angle", (n, _) => -(double)n)
-                    )
+                    .BindTwoWay("Text", "Name")
+                    .Bind("Angle", "Angle", (n, _) => -(double)n)
                 ),
               Seat(1, "0.2 0", "0.5 1"),
               Seat(2, "0.5 0", "0.5 1"),
@@ -211,8 +197,7 @@ namespace Demo.Samples.SeatingChart {
         {
           "TableC8",  // circular with 8 seats
           new Node("Spot")
-            .Set(tableStyle)
-            .Bind(tableBind())
+            .Apply(tableStyle)
             .Add(
               new Panel("Spot")
                 .Add(
@@ -223,16 +208,14 @@ namespace Demo.Samples.SeatingChart {
                       Fill = "burlywood",
                       Stroke = null
                     }
-                    .Bind("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify)
+                    .BindTwoWay("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify)
                     .Bind("Fill"),
                   new TextBlock {
                       Editable = true,
                       Font = new Font("Verdana", 11, Northwoods.Go.FontWeight.Bold)
                     }
-                    .Bind(
-                      new Binding("Text", "Name").MakeTwoWay(),
-                      new Binding("Angle", "Angle", (n, _) => -(double)n)
-                    )
+                    .BindTwoWay("Text", "Name")
+                    .Bind("Angle", "Angle", (n, _) => -(double)n)
                 ),
               Seat(1, "0.50 0", "0.5 1"),
               Seat(2, "0.85 0.15", "0.15 0.85"),
@@ -282,7 +265,7 @@ namespace Demo.Samples.SeatingChart {
 
       // put deleted people back in the _Guests diagram (Palette)
       _Diagram.SelectionDeleted += (obj, e) => {
-        // no-op if deleted by _Guests' ExternalObjectsDropped listener
+        // no-op if deleted by _Guests' ExternalElementsDropped listener
         if (_DisableSelectionDeleted) return;
         // e.Subject is the Diagram.Selection collection
         foreach (var part in e.Subject as HashSet<Part>) {

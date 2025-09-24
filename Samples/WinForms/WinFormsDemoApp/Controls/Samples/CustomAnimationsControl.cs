@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections;
@@ -98,7 +98,7 @@ namespace Demo.Samples.CustomAnimations {
             SelectionAdornmentTemplate = addNodeAdornment,
             LocationSpot = Spot.Center
           }
-          .Bind(new Binding("Location", "Loc").MakeTwoWay())
+          .BindTwoWay("Location", "Loc")
           .Add(
             new Shape("RoundedRectangle") {
                 StrokeWidth = 2,

@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -127,7 +127,7 @@ namespace Demo.Samples.Basic {
                 IsMultiline = false,  // don't allow newlines in text
                 Editable = true  // allow in-place editing by user
               }
-              .Bind(new Binding("Text").MakeTwoWay())  // the label shows the node data's text
+              .BindTwoWay("Text")  // the label shows the node data's text
           );
 
       // Define the appearance and behavior for Links:

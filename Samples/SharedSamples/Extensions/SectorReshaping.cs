@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using Northwoods.Go;
@@ -50,7 +50,7 @@ namespace Demo.Extensions.SectorReshaping {
           SelectionElementName = "LAMP", SelectionAdorned = false
         }
         .Bind(
-          new Binding("Location", "Loc", Point.Parse).MakeTwoWay(Point.Stringify),
+          new Binding("Location", "Loc", Point.Parse, Point.Stringify),
           // selecting a Node brings it forward in the z-order
           new Binding("LayerName", "IsSelected", (s, obj) => {
             return ((bool)s ? "Foreground" : "");
@@ -73,7 +73,7 @@ namespace Demo.Extensions.SectorReshaping {
             Alignment = new Spot(0.5, 0.5, 0, 3), AlignmentFocus = Spot.Top,
             Stroke = "blue", Background = "rgba(255,255,255,0.3)"
           }.Bind(
-            new Binding("Alignment", "Spot", Spot.Parse).MakeTwoWay(Spot.Stringify),
+            new Binding("Alignment", "Spot", Spot.Parse, Spot.Stringify),
             new Binding("Text", "Name")
           )
         );

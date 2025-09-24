@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using Northwoods.Go;
@@ -62,7 +62,7 @@ namespace Demo.Extensions.LinkLabelDragging {
       // node template
       _Diagram.NodeTemplate =
         new Node(PanelType.Auto)
-          .Bind(new Binding("Location", "Loc", Point.Parse).MakeTwoWay(Point.Stringify))
+          .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
           .Add(new Shape {
             Figure = "RoundedRectangle",
             Parameter1 = 20, // corner has a large radius
@@ -81,9 +81,7 @@ namespace Demo.Extensions.LinkLabelDragging {
             Font = new Font("Arial", 11, Northwoods.Go.FontWeight.Bold),
             Editable = true, // editing text automatically updates model data
             Margin = new Margin(1)
-          }.Bind(
-            new Binding("Text", "Text").MakeTwoWay()
-          )
+          }.BindTwoWay("Text")
         );
 
       // event for button to create "next" node
@@ -164,7 +162,8 @@ namespace Demo.Extensions.LinkLabelDragging {
           Adjusting = LinkAdjusting.Stretch,
           Reshapable = true
         }
-        .Bind(new Binding("Points").MakeTwoWay(),
+        .Bind(
+          new Binding("Points").MakeTwoWay(),
           new Binding("Curviness"))
         .Add(new Shape { // link shape
           StrokeWidth = 1.5
@@ -187,10 +186,8 @@ namespace Demo.Extensions.LinkLabelDragging {
               Stroke = "black",
               Margin = new Margin(4),
               Editable = true // editing the text automatically updates the model data
-            }.Bind(
-              new Binding("Text").MakeTwoWay()
-            ))
-          .Bind(new Binding("SegmentOffset", "SegmentOffset", Point.Parse).MakeTwoWay(Point.Stringify))
+            }.BindTwoWay("Text"))
+          .BindTwoWay("SegmentOffset", Point.Parse, Point.Stringify)
         );
 
       LoadModel();

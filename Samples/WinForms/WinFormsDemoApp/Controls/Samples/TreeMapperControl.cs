@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -129,7 +129,7 @@ namespace Demo.Samples.TreeMapper {
         new Group("Auto") {
             Deletable = false, Layout = makeGroupLayout()
           }
-          .Bind("Position", "XY", Point.Parse, Point.Stringify)
+          .BindTwoWay("Position", "XY", Point.Parse, Point.Stringify)
           .Bind("Layout", "Width", (w) => makeGroupLayout())
           .Add(
             new Shape { Fill = "white", Stroke = "lightgray" },

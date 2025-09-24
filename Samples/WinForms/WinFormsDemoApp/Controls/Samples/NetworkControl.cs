@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -87,7 +87,7 @@ namespace Demo.Samples.Network {
             LocationSpot = Spot.Center,
             SelectionElementName = "BODY"
           }
-          .Bind("Location", "Loc", Point.Parse, Point.Stringify)
+          .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
           .Add(
             new Shape("ACVoltageSource") {
                 Name = "BODY", Stroke = "white", StrokeWidth = 3, Fill = "transparent", Background = "darkblue",
@@ -99,7 +99,7 @@ namespace Demo.Samples.Network {
                 AlignmentFocus = Spot.Left,
                 Editable = true
               }
-              .Bind(new Binding("Text").MakeTwoWay())
+              .BindTwoWay("Text")
           );
 
       var connectorTemplate =
@@ -107,7 +107,7 @@ namespace Demo.Samples.Network {
             LocationSpot = Spot.Center,
             SelectionElementName = "BODY"
           }
-          .Bind("Location", "Loc", Point.Parse, Point.Stringify)
+          .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
           .Add(
             new Shape("Circle") {
                 Name = "BODY",
@@ -123,7 +123,7 @@ namespace Demo.Samples.Network {
                 AlignmentFocus = Spot.Left,
                 Editable = true
               }
-              .Bind(new Binding("Text").MakeTwoWay())
+              .BindTwoWay("Text")
           );
 
       var consumerTemplate =
@@ -131,7 +131,7 @@ namespace Demo.Samples.Network {
             LocationSpot = Spot.Center, LocationElementName = "BODY",
             SelectionElementName = "BODY"
           }
-         .Bind("Location", "Loc", Point.Parse, Point.Stringify)
+         .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
          .Add(
             new Picture("pc") {
                 Name = "BODY", Width = 50, Height = 40, Margin = 2,
@@ -140,7 +140,7 @@ namespace Demo.Samples.Network {
             new TextBlock {
                 Alignment = Spot.Right, AlignmentFocus = Spot.Left, Editable = true
               }
-              .Bind(new Binding("Text").MakeTwoWay())
+              .BindTwoWay("Text")
           );
 
       var hBarTemplate =
@@ -162,7 +162,7 @@ namespace Demo.Samples.Network {
                       }
                 )
           }
-          .Bind("Location", "Loc", Point.Parse, Point.Stringify)
+          .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
           .Add(
             new Shape("Rectangle") {
                 Name = "SHAPE",
@@ -173,14 +173,14 @@ namespace Demo.Samples.Network {
                 PortId = "",
                 ToLinkable = true
               }
-             .Bind("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify)
+             .BindTwoWay("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify)
              .Bind("Fill"),
             new TextBlock {
                 Alignment = Spot.Right,
                 AlignmentFocus = Spot.Left,
                 Editable = true
               }
-              .Bind(new Binding("Text").MakeTwoWay())
+              .BindTwoWay("Text")
           );
 
       sharedNodeTemplateMap = new Dictionary<string, Part> {

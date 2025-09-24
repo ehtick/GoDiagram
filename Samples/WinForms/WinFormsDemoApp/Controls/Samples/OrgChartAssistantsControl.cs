@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -107,8 +107,8 @@ namespace Demo.Samples.OrgChartAssistants {
 
       // This converter is used by the Picture.
       string FindHeadShot(object obj) {
-        if (obj is not string pic || pic == "") return "https://nwoods.com/go/images/samples/HSnopic.png"; // There are only 16 images on the server
-        return $"https://nwoods.com/go/images/samples/hs{pic}";
+        if (obj is not string pic || pic == "") return "https://nwoods.com/images/samples/HSnopic.png"; // There are only 16 images on the server
+        return $"https://nwoods.com/images/samples/hs{pic}";
       }
 
       // define the Node template
@@ -160,7 +160,7 @@ namespace Demo.Samples.OrgChartAssistants {
               Name = "Picture",
               DesiredSize = new Size(39, 50),
               Margin = new Margin(6, 8, 6, 10),
-              Source = "https://nwoods.com/go/images/samples/HSnopic.png"  // the default image
+              Source = "https://nwoods.com/images/samples/HSnopic.png"  // the default image
             }.Bind(
               new Binding("Source", "Pic", FindHeadShot)),
             // define the panel where the text will appear
@@ -177,7 +177,7 @@ namespace Demo.Samples.OrgChartAssistants {
                 Row = 0, Column = 0, ColumnSpan = 5,
                 Editable = true, IsMultiline = false,
                 MinSize = new Size(10, 16)
-              }.Bind(new Binding("Text", "Name").MakeTwoWay()),
+              }.BindTwoWay("Text", "Name"),
               new TextBlock("Title: ") { Row = 1, Column = 0 }
                 .Set(textStyle),
               new TextBlock {
@@ -185,14 +185,14 @@ namespace Demo.Samples.OrgChartAssistants {
                 Editable = true, IsMultiline = false,
                 MinSize = new Size(10, 14),
                 Margin = new Margin(0, 0, 0, 3)
-              }.Set(textStyle).Bind(new Binding("Text", "Title").MakeTwoWay()),
+              }.Set(textStyle).BindTwoWay("Text", "Title"),
               new TextBlock {
                 Row = 2, Column = 0
-              }.Set(textStyle).Bind( new Binding("Text", "Key", (v) => { return "ID: " + v.ToString(); })),
+              }.Set(textStyle).Bind("Text", "Key", (v) => { return "ID: " + v.ToString(); }),
               new TextBlock {
                 Name = "boss",  // we include a name so we can access this TextBlock when deleting Nodes/Links
                 Row = 2, Column = 3
-              }.Set(textStyle).Bind(new Binding("Text", "Parent", (v) => { return (int)v == 0 ? "" : "Boss: " + v.ToString(); })),
+              }.Set(textStyle).Bind("Text", "Parent", (v) => { return (int)v == 0 ? "" : "Boss: " + v.ToString(); }),
               new TextBlock {  // the comments
                 Row = 3, Column = 0, ColumnSpan = 5,
                 Stroke = "white",
@@ -200,7 +200,7 @@ namespace Demo.Samples.OrgChartAssistants {
                 Wrap = Wrap.Fit,
                 Editable = true,  // by default newlines are allowed
                 MinSize = new Size(10, 14),
-              }.Bind( new Binding("Text", "Comments").MakeTwoWay())
+              }.BindTwoWay("Text", "Comments")
             )  // end Table Panel
           ) // end Horizontal Panel
         );  // end Node

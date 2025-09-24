@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -202,14 +202,6 @@ namespace Demo.Samples.Flowgrammer {
             ),
           new Shape() { IsPanelMain = true, Stroke = "black", StrokeWidth = 1.5 },
           new Shape() { ToArrow = "Standard", StrokeWidth = 0 }
-          //new TextBlock { SegmentIndex = -2, SegmentFraction = .75, Editable = true }
-          //  .Bind(
-          //    new Binding("Text").MakeTwoWay(),
-          //    new Binding("Background", "Text", (val, _) => {
-          //      var t = val as string;
-          //      return t != null && t != "" ? "white" : null;
-          //    })
-          //  )
         );
 
       LoadModel();  // read model from textarea and initialize MyDiagram
@@ -450,14 +442,11 @@ namespace Demo.Samples.Flowgrammer {
 
       var shapeStyle = new { Name = "SHAPE", Fill = "white" };
 
-      var textStyle = new {
-        Name = "TEXTBLOCK",
-        TextAlign = TextAlign.Center,
-        Editable = true,
-      };
-
-      Binding TextBind() {
-        return new Binding("Text").MakeTwoWay();
+      void textStyle(TextBlock tb) {
+        tb.Name = "TEXTBLOCK";
+        tb.TextAlign = TextAlign.Center;
+        tb.Editable = true;
+        tb.BindTwoWay("Text");
       }
 
       // define templates for each type of node
@@ -469,7 +458,7 @@ namespace Demo.Samples.Flowgrammer {
           .Set(nodeStyle)
           .Add(
             new Shape("Rectangle").Set(shapeStyle),
-            new TextBlock("Action") { Margin = 4, Editable = true }.Set(textStyle).Bind(TextBind())
+            new TextBlock("Action") { Margin = 4, Editable = true }.Apply(textStyle)
           );
 
       var startTemplate =
@@ -479,7 +468,7 @@ namespace Demo.Samples.Flowgrammer {
           .Set(nodeStyle)
           .Add(
             new Shape("Circle").Set(shapeStyle),
-            new TextBlock("Start").Set(textStyle).Bind(TextBind())
+            new TextBlock("Start").Apply(textStyle)
           );
 
       var endTemplate =
@@ -489,7 +478,7 @@ namespace Demo.Samples.Flowgrammer {
           .Set(nodeStyle)
           .Add(
             new Shape("Circle").Set(shapeStyle),
-            new TextBlock("End").Set(textStyle).Bind(TextBind())
+            new TextBlock("End").Apply(textStyle)
           );
 
       var forTemplate =
@@ -499,7 +488,7 @@ namespace Demo.Samples.Flowgrammer {
           .Set(nodeStyle)
           .Add(
             new Shape("ForEach").Set(shapeStyle),
-            new TextBlock("For Each") { Margin = 4 }.Set(textStyle).Bind(TextBind())
+            new TextBlock("For Each") { Margin = 4 }.Apply(textStyle)
           );
 
       var endForTemplate =
@@ -517,7 +506,7 @@ namespace Demo.Samples.Flowgrammer {
           .Add(
             new Shape("ForEach") { Angle = -90, Spot2 = new Spot(1, 1, -6, 0) }
               .Set(shapeStyle),
-            new TextBlock("While") { Margin = 4 }.Set(textStyle).Bind(TextBind())
+            new TextBlock("While") { Margin = 4 }.Apply(textStyle)
           );
 
       var endWhileTemplate =
@@ -534,7 +523,7 @@ namespace Demo.Samples.Flowgrammer {
           .Set(nodeStyle)
           .Add(
             new Shape("Diamond").Set(shapeStyle),
-            new TextBlock("If").Set(textStyle).Bind(TextBind())
+            new TextBlock("If").Apply(textStyle)
           );
 
       var endIfTemplate =
@@ -551,7 +540,7 @@ namespace Demo.Samples.Flowgrammer {
           .Set(nodeStyle)
           .Add(
             new Shape("TriangleUp").Set(shapeStyle),
-            new TextBlock("Switch") { Margin = 4 }.Set(textStyle).Bind(TextBind())
+            new TextBlock("Switch") { Margin = 4 }.Apply(textStyle)
           );
 
       var mergeTemplate =

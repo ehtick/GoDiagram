@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -213,9 +213,7 @@ namespace Demo.Samples.OrgChartExtras {
               Stroke = "white",
               MinSize = new Size(10, 14),
               Name = "name"
-            }.Bind(
-              new Binding("Text", "Name").MakeTwoWay()
-            ),
+            }.BindTwoWay("Text", "Name"),
             new TextBlock {
               Text = "Title: ",
               Row = 1,
@@ -230,9 +228,7 @@ namespace Demo.Samples.OrgChartExtras {
               MinSize = new Size(10, 14),
               Margin = new Margin(0, 0, 0, 3),
               Name = "title"
-            }.Set(TextStyle()).Bind(
-              new Binding("Text", "Title").MakeTwoWay()
-            ),
+            }.Set(TextStyle()).BindTwoWay("Text", "Title"),
             new TextBlock { // the ID and the boss
               Text = "ID: ",
               Row = 2,
@@ -241,9 +237,7 @@ namespace Demo.Samples.OrgChartExtras {
             new TextBlock {
               Row = 2,
               Column = 1
-            }.Set(TextStyle()).Bind(
-              new Binding("Text", "Key")
-            ),
+            }.Set(TextStyle()).Bind("Text", "Key"),
             new TextBlock {
               Text = "Boss: ",
               Row = 3,
@@ -273,9 +267,7 @@ namespace Demo.Samples.OrgChartExtras {
               Stroke = "white",
               MinSize = new Size(10, 14),
               Name = "comments"
-            }.Bind(
-              new Binding("Text", "Comments").MakeTwoWay()
-            ),
+            }.BindTwoWay("Text", "Comments"),
             Builder.Make<Panel>("TreeExpanderButton").Set(
               new { Row = 4, ColumnSpan = 99, Alignment = Spot.Center }
             )
@@ -315,9 +307,7 @@ namespace Demo.Samples.OrgChartExtras {
             Stroke = "green",
             Background = "rgba(255,255,255,0.75)",
             MaxSize = new Size(80, double.NaN), Editable = true
-          }.Bind(
-            new Binding("Text").MakeTwoWay()
-          )
+          }.BindTwoWay("Text")
         )
       );
 
@@ -343,9 +333,7 @@ namespace Demo.Samples.OrgChartExtras {
             Stroke = "orange",
             Background = "rgba(255,255,255,0.75)",
             MaxSize = new Size(80, double.NaN), Editable = true
-          }.Bind(
-            new Binding("Text").MakeTwoWay()
-          )
+          }.BindTwoWay("Text")
         )
       );
 

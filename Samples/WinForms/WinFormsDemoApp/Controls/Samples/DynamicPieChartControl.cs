@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -153,14 +153,13 @@ namespace Demo.Samples.DynamicPieChart {
               Editable = true,
               IsMultiline = false,
               TextValidation = IsValidCount
-            }.Bind(
-              new Binding("Text", "Count", (c, _) => {
+            }.BindTwoWay("Text", "Count", (c, _) => {
                 return (c as int? ?? 0).ToString();
-              }).MakeTwoWay((count, _, __) => {
+              }, (count, _, __) => {
                 int num;
                 var success = int.TryParse(count as string, out num);
                 return success ? num : 0;
-              })
+              }
             )
           ),
           new Panel(PanelType.Horizontal) {

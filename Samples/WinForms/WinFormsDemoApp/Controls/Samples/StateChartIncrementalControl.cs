@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -93,9 +93,9 @@ namespace Demo.Samples.StateChartIncremental {
 
       // define the Node template
       myDiagram.NodeTemplate =
-        new Node(PanelType.Auto).Bind(
-          new Binding("Location", "Loc", Point.Parse).MakeTwoWay(Point.Stringify)
-        ).Add(
+        new Node(PanelType.Auto)
+        .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
+        .Add(
           // define the node's outer shape, which will surround the TextBlock
           new Shape {
             Figure = "RoundedRectangle",
@@ -118,8 +118,7 @@ namespace Demo.Samples.StateChartIncremental {
           new TextBlock {
             Font = new Font("Segoe UI", 11, FontWeight.Bold),
             Editable = true  // editing the text automatically updates the model data
-          }.Bind(
-            new Binding("Text", "Text").MakeTwoWay())
+          }.BindTwoWay("Text")
         );
 
       // unlike the normal selection Adornment, this one includes a Button
@@ -192,10 +191,10 @@ namespace Demo.Samples.StateChartIncremental {
           Reshapable = true,
           RelinkableFrom = true,
           RelinkableTo = true
-        }.Bind(
-          new Binding("Points").MakeTwoWay(),
-          new Binding("Curviness", "Curviness")
-        ).Add(
+        }
+        .BindTwoWay("Points")
+        .Bind("Curviness")
+        .Add(
           new Shape  // the link shape
             {
             StrokeWidth = 1.5
@@ -223,9 +222,7 @@ namespace Demo.Samples.StateChartIncremental {
               Stroke = "black",
               Margin = 4,
               Editable = true  // editing the text automatically updates the model data
-            }.Bind(
-              new Binding("Text", "Text").MakeTwoWay()
-            )
+            }.BindTwoWay("Text")
           )
         );
 

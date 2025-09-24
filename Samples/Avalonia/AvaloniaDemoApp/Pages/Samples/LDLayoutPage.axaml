@@ -72,6 +72,13 @@
             <CheckBox Name="straighten" IsChecked="True">Straighten</CheckBox>
             <CheckBox Name="expand" IsChecked="True">Expand</CheckBox>
           </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Align:</TextBlock>
+            <CheckBox Name="upperLeft" IsChecked="True">UpperLeft</CheckBox>
+            <CheckBox Name="upperRight" IsChecked="True">UpperRight</CheckBox>
+            <CheckBox Name="lowerLeft" IsChecked="True">LowerLeft</CheckBox>
+            <CheckBox Name="lowerRight" IsChecked="True">LowerRight</CheckBox>
+          </StackPanel>
           <CheckBox Name="setsPortSpots" IsChecked="True">SetsPortSpots</CheckBox>
         </StackPanel>
       </StackPanel>

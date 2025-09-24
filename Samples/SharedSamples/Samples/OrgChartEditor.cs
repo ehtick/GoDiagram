@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -92,8 +92,8 @@ namespace Demo.Samples.OrgChartEditor {
 
       // This converter is used by the Picture.
       string FindHeadShot(object obj) {
-        if (obj is not string pic || pic == "") return "https://nwoods.com/go/images/samples/HSnopic.png"; // There are only 16 images on the server
-        return $"https://nwoods.com/go/images/samples/hs{pic}";
+        if (obj is not string pic || pic == "") return "https://nwoods.com/images/samples/HSnopic.png"; // There are only 16 images on the server
+        return $"https://nwoods.com/images/samples/hs{pic}";
       }
 
       void AddEmployee(Node node) {
@@ -171,7 +171,7 @@ namespace Demo.Samples.OrgChartEditor {
                         Name = "Picture",
                         DesiredSize = new Size(80, 80),
                         Margin = 1.5,
-                        Source = "https://nwoods.com/go/images/samples/HSnopic.png"  // the default image
+                        Source = "https://nwoods.com/images/samples/HSnopic.png"  // the default image
                       }
                       .Bind("Source", "Pic", FindHeadShot),
                     // define the panel where the text will appear
@@ -191,7 +191,7 @@ namespace Demo.Samples.OrgChartEditor {
                             Editable = true, IsMultiline = false,
                             MinSize = new Size(50, 16)
                           }
-                          .Bind(new Binding("Text", "Name").MakeTwoWay()),
+                          .BindTwoWay("Text", "Name"),
                         new TextBlock("Title: ") { Row = 1, Column = 0 }
                           .Set(textStyle),
                         new TextBlock {
@@ -201,7 +201,7 @@ namespace Demo.Samples.OrgChartEditor {
                             Margin = new Margin(0, 0, 0, 3)
                           }
                           .Set(textStyle)
-                          .Bind(new Binding("Text", "Title").MakeTwoWay()),
+                          .BindTwoWay("Text", "Title"),
                         new TextBlock { Row = 2, Column = 0 }
                           .Set(textStyle)
                           .Bind("Text", "Key", (v, _) => { return "ID: " + v.ToString(); }),
@@ -216,7 +216,7 @@ namespace Demo.Samples.OrgChartEditor {
                             Editable = true,  // by default newlines are allowed
                             MinSize = new Size(100, 14)
                           }
-                          .Bind(new Binding("Text", "Comments").MakeTwoWay())
+                          .BindTwoWay("Text", "Comments")
                       )  // end Table Panel
                   )  // end Horizontal Panel
               ),  // end Auto Panel

@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -72,7 +72,7 @@ namespace Demo.Samples.ProcessFlow {
             LocationSpot = new Spot(0.5, 0.5), LocationElementName = "SHAPE",
             Resizable = true, ResizeElementName = "SHAPE"
           }
-          .Bind("Location", "Pos", Point.Parse, Point.Stringify)
+          .BindTwoWay("Location", "Pos", Point.Parse, Point.Stringify)
           .Add(
             new Shape("Cylinder1") {
                 StrokeWidth = 2,
@@ -84,12 +84,12 @@ namespace Demo.Samples.ProcessFlow {
                 MinSize = new Size(50, 50),
                 PortId = "", FromSpot = Spot.AllSides, ToSpot = Spot.AllSides
               }
-              .Bind("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify),
+              .BindTwoWay("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify),
             new TextBlock {
                 Alignment = Spot.Center, TextAlign = TextAlign.Center, Margin = 5,
                 Editable = true
               }
-              .Bind(new Binding("Text").MakeTwoWay())
+              .BindTwoWay("Text")
           )
         );
 
@@ -101,21 +101,18 @@ namespace Demo.Samples.ProcessFlow {
             SelectionElementName = "SHAPE",
             Rotatable = true
           }
-          .Bind(
-            new Binding("Angle").MakeTwoWay(),
-            new Binding("Location", "Pos", Point.Parse).MakeTwoWay(Point.Stringify)
-          )
+          .BindTwoWay("Angle")
+          .BindTwoWay("Location", "Pos", Point.Parse, Point.Stringify)
           .Add(
             new TextBlock {
                 Alignment = Spot.Center, TextAlign = TextAlign.Center, Margin = 5, Editable = true
               }
-              .Bind(
-                new Binding("Text").MakeTwoWay(),
-                // keep text upright when the node is upside down
-                new Binding("Angle", "Angle", (a, obj) => {
+              .BindTwoWay("Text")
+              // keep text upright when the node is upside down
+              .BindElement("Angle", "Angle", (a, obj) => {
                   var b = Convert.ToInt32(a as double? ?? -1d);
                   return (b == 180 ? 180 : 0);
-                }).OfElement()
+                }
               ),
             new Shape {
               Name = "SHAPE",
@@ -136,7 +133,7 @@ namespace Demo.Samples.ProcessFlow {
             Reshapable = true,
             ToShortLength = 7
           }
-          .Bind(new Binding("Points").MakeTwoWay())
+          .BindTwoWay("Points")
           .Add(
             // mark each Shape to get the link geometry with IsPanelMain = true
             new Shape { IsPanelMain = true, Stroke = "black", StrokeWidth = 7 },

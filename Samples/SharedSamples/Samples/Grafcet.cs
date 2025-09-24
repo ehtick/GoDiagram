@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Linq;
@@ -258,8 +258,8 @@ namespace Demo.Samples.Grafcet {
         LocationSpot = Spot.Center,
         SelectionAdornmentTemplate = commandsAdornment
       };
-      Binding locBind() {
-        return new Binding("Location", "Loc", Point.Parse, Point.Stringify);
+      void locBind(Node node) {
+        node.BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify);
       }
 
       _Diagram.NodeTemplateMap["Start"] =
@@ -267,7 +267,7 @@ namespace Demo.Samples.Grafcet {
           LocationElementName = "STEPPANEL", SelectionElementName = "STEPPANEL"
         }
           .Set(commonNodeStyle)
-          .Bind(locBind())
+          .Apply(locBind)
           .Add(
             new Panel("Auto") {  // this is the port element, not the whole Node
               Name = "STEPPANEL", PortId = "",
@@ -289,7 +289,7 @@ namespace Demo.Samples.Grafcet {
               .Add(
                 new Shape { Fill = "white" },
                 new TextBlock("Action") { Margin = 3, Editable = true }
-                  .Bind(new Binding("Text").MakeTwoWay())
+                  .BindTwoWay("Text")
               )
           );
 
@@ -298,7 +298,7 @@ namespace Demo.Samples.Grafcet {
           LocationElementName = "STEPPANEL", SelectionElementName = "STEPPANEL"
         }
           .Set(commonNodeStyle)
-          .Bind(locBind())
+          .Apply(locBind)
           .Add(
             new Panel("Auto") {  // this is the port element, not the whole Node
               Name = "STEPPANEL", PortId = "",
@@ -315,7 +315,7 @@ namespace Demo.Samples.Grafcet {
               .Add(
                 new Shape { Fill = "white" },
                 new TextBlock("Action") { Margin = 3, Editable = true }
-                  .Bind(new Binding("Text").MakeTwoWay())
+                  .BindTwoWay("Text")
               )
           );
 
@@ -339,13 +339,13 @@ namespace Demo.Samples.Grafcet {
           FromLinkable = true, ToLinkable = true
         }
           .Set(commonNodeStyle)
-          .Bind(locBind())
+          .Apply(locBind)
           .Add(
             new Shape {  // horizontal pair of lines stretched to an initial width of 200
               Name = "SHAPE", GeometryString = "M0 0 L100 0 M0 4 L100 4",
               Fill = "transparent", Stroke = "red", Width = 200
             }
-              .Bind("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify)
+              .BindTwoWay("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify)
           );
 
       _Diagram.NodeTemplateMap["Exclusive"] =
@@ -354,13 +354,13 @@ namespace Demo.Samples.Grafcet {
           FromLinkable = true, ToLinkable = true
         }
           .Set(commonNodeStyle)
-          .Bind(locBind())
+          .Apply(locBind)
           .Add(
             new Shape {  // horizontal line stretched to an initial width of 200
               Name = "SHAPE", GeometryString = "M0 0 L100 0",
               Fill = "transparent", Stroke = "red", Width = 200
             }
-              .Bind("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify)
+              .BindTwoWay("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify)
           );
 
       // various kinds of links
@@ -377,7 +377,7 @@ namespace Demo.Samples.Grafcet {
             new TextBlock {  // only visible when there is text
               AlignmentFocus = new Spot(0, 0.5, -12, 0), Editable = true
             }
-              .Bind(new Binding("Text").MakeTwoWay())
+              .BindTwoWay("Text")
               .Bind("Visible", "Text", (t, _) => { return t as string != ""; })
           );
 
@@ -396,7 +396,7 @@ namespace Demo.Samples.Grafcet {
             new TextBlock {  // only visible when there is text
               AlignmentFocus = new Spot(1, 0.5, 12, 0), Editable = true
             }
-              .Bind(new Binding("Text").MakeTwoWay())
+              .BindTwoWay("Text")
               .Bind("Visible", "Text", (t, _) => { return (t as string) != ""; })
           );
 
@@ -417,7 +417,7 @@ namespace Demo.Samples.Grafcet {
             new TextBlock {  // only visible when there is text
               AlignmentFocus = new Spot(1, 0.5, 12, 0), Editable = true
             }
-              .Bind(new Binding("Text").MakeTwoWay())
+              .BindTwoWay("Text")
               .Bind("Visible", "Text", (t, _) => { return t as string != ""; })
           );
 

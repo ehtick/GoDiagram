@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
+﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -84,7 +84,7 @@ namespace Demo.Samples.AdornmentButtons {
             }
           },
           LocationSpot = Spot.Center
-        }.Bind(new Binding("Location", "Loc", Point.Parse).MakeTwoWay(Point.Stringify))
+        }.BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
           .Add(new Shape {
             Name = "SHAPE",  // named so that changeColor can modify it
             StrokeWidth = 0,  // no border
@@ -115,8 +115,7 @@ namespace Demo.Samples.AdornmentButtons {
             //editable = true,
             Overflow = Overflow.Ellipsis,
             MaxLines = 5
-          }.Bind(
-            new Binding("Text").MakeTwoWay())
+          }.BindTwoWay("Text")
         );
 
       // a selected node shows an Adornment that includes both a blue border
